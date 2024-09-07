@@ -1,4 +1,4 @@
-# GraphQL App
+# GraphiQL App
 
 This project is a lightweight API client combining features of both Postman and GraphQL. It allows users to make REST and GraphQL requests, manage request history, and supports authentication and authorization using Firebase. The app is developed using React and Remix and is designed to offer an intuitive interface for testing APIs.
 
@@ -74,7 +74,7 @@ Follow these steps to set up and run the project locally:
 
 2.  Navigate to the project directory.
 
-        cd graphql-app
+        cd graphiql-app
 
 3.  Install the project dependencies.
 

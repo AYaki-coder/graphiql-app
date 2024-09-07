@@ -1,5 +1,5 @@
 {
-  "name": "graphql-app",
+  "name": "graphiql-app",
   "private": true,
   "sideEffects": false,
   "type": "module",
