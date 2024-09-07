@@ -4,4 +4,4 @@ export default function Index() {
       <h1>Welcome to Index</h1>
     </div>
   );
-};
+}
