@@ -13,7 +13,8 @@
     "format:fix": "prettier --write .",
     "typecheck": "tsc",
     "prepare": "husky",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
@@ -65,12 +66,12 @@
     "vitest": "^2.0.5"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
+    "app/**/*.{ts,tsx}": [
       "eslint",
       "prettier --write",
       "lint-staged-tsc"
     ],
-    "src/**/*.{css,scss,html}": [
+    "app/**/*.{css,scss,html}": [
       "prettier --write --ignore-unknown"
     ],
     "*.{json,md}": [
