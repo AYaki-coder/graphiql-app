@@ -1,0 +1,15 @@
+@import './../../styles/color.scss';
+
+.header {
+  background-color: $primary;
+  padding: 1rem 2rem;
+}
+
+.link {
+  color: $white;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../styles/color.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: $gray-light;
+}
+
+.logo {
+  width: 2rem;
+  height: 2rem;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.ghLink {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-right: 1rem;
+  color: $dark;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.ghIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+}

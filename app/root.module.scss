@@ -1,0 +1,16 @@
+@import './styles/color.scss';
+
+.body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow-x: hidden;
+  padding-right: 0 !important;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  color: $dark;
+  background-color: #edeef2;
+}

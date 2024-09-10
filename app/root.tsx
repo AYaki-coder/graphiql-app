@@ -2,6 +2,9 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/reac
 import { LinksFunction } from '@remix-run/node';
 
 import { isRouteErrorResponse, useRouteError } from '@remix-run/react';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
+import s from './root.module.scss';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -25,8 +28,12 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className={s.body}>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
