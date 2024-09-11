@@ -1,1 +1,7 @@
-{}
+{
+  "restPage_example": {
+    "submitButton_example": "Отправить",
+    "resetButton_example": "Сбросить",
+    "setButton_example": "Установить"
+  }
+}
