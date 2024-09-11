@@ -1,1 +1,7 @@
-{}
+{
+  "restPage_example": {
+    "submitButton_example": "Submit",
+    "resetButton_example": "Reset",
+    "setButton_example": "Set"
+  }
+}

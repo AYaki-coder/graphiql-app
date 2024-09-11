@@ -5,6 +5,7 @@ import { isRouteErrorResponse, useRouteError } from '@remix-run/react';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import s from './root.module.scss';
+import { LangProvider } from './components/lang-context/lang-context';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -29,11 +30,13 @@ export default function App() {
         <Links />
       </head>
       <body className={s.body}>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
+        <LangProvider>
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </LangProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
