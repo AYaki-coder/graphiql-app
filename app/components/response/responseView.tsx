@@ -1,5 +1,5 @@
 import { JSONTree } from 'react-json-tree';
-import { ResponseProps, ResponseType } from '~/models/response';
+import { ResponseViewProps, ResponseViewType } from '~/models/response';
 
 const theme = {
   scheme: 'default',
@@ -22,14 +22,14 @@ const theme = {
   base0F: '#8b4513',
 };
 
-export default function Response(props: ResponseProps) {
+export default function ResponseView(props: ResponseViewProps) {
   const { status, type, data } = props;
 
   return (
     <div>
       <h2>Response</h2>
       <p>Status: {status}</p>
-      {type === ResponseType.JSON ? (
+      {type === ResponseViewType.JSON ? (
         <pre>
           <code>
             <JSONTree data={data} theme={theme} invertTheme={false} />

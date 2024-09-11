@@ -1,10 +1,10 @@
-export interface ResponseProps {
+export interface ResponseViewProps {
   status: number;
-  type: ResponseType;
+  type: ResponseViewType;
   data: unknown;
 }
 
-export enum ResponseType {
+export enum ResponseViewType {
   JSON = 'json',
   TEXT = 'text',
   ERROR = 'error',
