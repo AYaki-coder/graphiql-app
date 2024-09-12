@@ -1,4 +1,9 @@
 {
+  "headersSelector": {
+    "titleText": "Headers",
+    "headerNameInputPlaceholder": "header name",
+    "headerValueInputPlaceholder": "header value"
+  },
   "restPage_example": {
     "submitButton_example": "Submit",
     "resetButton_example": "Reset",

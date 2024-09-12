@@ -1,0 +1,72 @@
+@import '../../styles/global.scss';
+
+.headersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 16px;
+  flex: 1 1 100%;
+
+  .headersTitle {
+    margin: 10px 0 0;
+  }
+
+  .fieldset {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 10px 10px;
+
+    .headerInput {
+      flex: 1 1 100%;
+    }
+
+    .addBtn {
+      padding: 10px 6px;
+    }
+  }
+
+  .headersTabsContainer {
+    display: flex;
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    flex: 1 1 100%;
+
+    .tab {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 8px;
+      background-color: white;
+      border-radius: 5px;
+      border: 1px solid gray;
+      padding: 5px;
+    }
+
+    .tabBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      font-size: 16px;
+      &:hover {
+        box-shadow: 0 0 6px 0 yellow;
+      }
+    }
+
+    .removeBtn {
+      pointer-events: all;
+      padding: 6px;
+
+      &:hover {
+        box-shadow: 0 0 6px 0 red;
+      }
+    }
+  }
+}

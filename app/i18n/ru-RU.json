@@ -1,4 +1,9 @@
 {
+  "headersSelector": {
+    "titleText": "Заголовки",
+    "headerNameInputPlaceholder": "имя заголовка",
+    "headerValueInputPlaceholder": "значение заголовка"
+  },
   "restPage_example": {
     "submitButton_example": "Отправить",
     "resetButton_example": "Сбросить",

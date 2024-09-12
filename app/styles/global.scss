@@ -31,9 +31,12 @@
     background-color: #1f2f76;
     border-color: #1e2c6f;
   }
-
+  &:focus {
+    outline-color: rgba(70, 85, 156, 0.5);
+  }
   &:focus-visible {
     box-shadow: 0 0 0 0.15rem rgba(70, 85, 156, 0.5);
+    outline-color: rgba(70, 85, 156, 0.5);
   }
   &:active {
     box-shadow: 0 0 0 0.25rem rgba(70, 85, 156, 0.5);
@@ -50,9 +53,63 @@
     color: #000;
     background-color: #e6eafb;
     border-color: #e4e9fb;
+  }
+
+  &:focus {
+    outline-color: rgba(191, 196, 213, 0.5);
+  }
+  &:focus-visible {
+    outline-color: rgba(191, 196, 213, 0.5);
     box-shadow: 0 0 0 0.15rem rgba(191, 196, 213, 0.5);
   }
   &:active {
     box-shadow: 0 0 0 0.25rem rgba(191, 196, 213, 0.5);
+  }
+}
+
+.formControl {
+  display: block;
+  padding: 0.875rem 1.375rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #212529;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 2px;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+
+  &.full {
+    width: 100%;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    // box-shadow: 0 0 0 0.15rem rgba(191, 196, 213, 0.5);
+    // outline-color: rgba(191, 196, 213, 0.5);
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+  }
+  &:focus,
+  &:focus-visible {
+    outline: rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+  }
+  // &:active {
+  //   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  // }
+
+  &[disabled] {
+    color: #979797;
+    background-color: #e9ecef;
+    opacity: 1;
+    pointer-events: none;
   }
 }
