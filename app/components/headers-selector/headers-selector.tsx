@@ -84,6 +84,7 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
           ref={valueRef}
         />
         <button
+          type="button"
           className={classNames(s.btn, s.btnPrimary, s.addBtn)}
           onClick={event => {
             event.preventDefault();
@@ -106,6 +107,7 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
             return (
               <div key={header[0]} className={classNames(s.tab)}>
                 <button
+                  type="button"
                   className={classNames(s.btn, s.btnLight, s.tabBtn)}
                   onClick={() => {
                     setHeaderToForm(header[0], header[1]);
@@ -114,6 +116,7 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
                 </button>
 
                 <button
+                  type="button"
                   className={classNames(s.removeBtn, s.btn, s.btnPrimary)}
                   onClick={() => {
                     setHeader(header[0], header[1], false);
