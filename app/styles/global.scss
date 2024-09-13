@@ -1,76 +1,22 @@
-.btn {
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1;
-  color: #1c2c42;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 0.625rem 1.625rem;
-  font-size: 0.813rem;
-  border-radius: 0.375rem;
-  transition:
-    color 0.25s ease-in-out,
-    background-color 0.25s ease-in-out,
-    border-color 0.25s ease-in-out,
-    box-shadow 0.25s ease-in-out;
+$media-mobile: 'screen and (max-width: 767px)';
+$media-tablets: 'screen and (min-width: 768px) and (max-width: 1199px)';
+$media-desktop: 'screen and (min-width: 1200px) and (max-width: 1919px)';
+$media-desktop-large: 'screen and (min-width: 1920px)';
 
-  &[disabled] {
-    color: #979797;
-    background-color: #e9ecef;
-    opacity: 1;
-    pointer-events: none;
+.wrapper {
+  width: 100%;
+  @media #{$media-desktop-large} {
+    padding: 0 15rem;
   }
-}
-
-.btnPrimary {
-  color: #fff;
-  background-color: #25378b;
-  border-color: #25378b;
-
-  &:hover,
-  :focus-visible {
-    color: #fff;
-    background-color: #1f2f76;
-    border-color: #1e2c6f;
+  @media #{$media-desktop} {
+    padding: 0 8rem;
   }
-  &:focus {
-    outline-color: rgba(70, 85, 156, 0.5);
-  }
-  &:focus-visible {
-    box-shadow: 0 0 0 0.15rem rgba(70, 85, 156, 0.5);
-    outline-color: rgba(70, 85, 156, 0.5);
-  }
-  &:active {
-    box-shadow: 0 0 0 0.25rem rgba(70, 85, 156, 0.5);
-  }
-}
-
-.btnLight {
-  color: #000;
-  background-color: #e1e6fa;
-  border-color: #e1e6fa;
-
-  &:hover,
-  &:focus-visible {
-    color: #000;
-    background-color: #e6eafb;
-    border-color: #e4e9fb;
+  @media #{$media-tablets} {
+    padding: 0 2rem;
   }
 
-  &:focus {
-    outline-color: rgba(191, 196, 213, 0.5);
-  }
-  &:focus-visible {
-    outline-color: rgba(191, 196, 213, 0.5);
-    box-shadow: 0 0 0 0.15rem rgba(191, 196, 213, 0.5);
-  }
-  &:active {
-    box-shadow: 0 0 0 0.25rem rgba(191, 196, 213, 0.5);
+  @media #{$media-mobile} {
+    padding: 0 1rem;
   }
 }
 

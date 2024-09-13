@@ -3,7 +3,14 @@
 
 .header {
   background-color: $primary;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.headerContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .link {

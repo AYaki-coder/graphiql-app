@@ -1,0 +1,159 @@
+@import './color.scss';
+@import './global.scss';
+
+.display1,
+.display2,
+.display3,
+.display4 {
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.display1 {
+  font-size: 3.75rem;
+
+  @media #{$media-tablets} {
+    font-size: 3rem;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 3rem;
+  }
+}
+
+.display2 {
+  font-size: 3.125rem;
+  @media #{$media-tablets} {
+    font-size: 2.5rem;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 2.5rem;
+  }
+}
+
+.display3 {
+  font-size: 2.5rem;
+  @media #{$media-tablets} {
+    font-size: 2rem;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 2rem;
+  }
+}
+
+.display4 {
+  font-size: 1.875rem;
+  @media #{$media-tablets} {
+    font-size: 1.5rem;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 1.5rem;
+  }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: $dark;
+}
+
+h1,
+.h1,
+.h1 {
+  font-size: 2.25rem;
+}
+
+h2,
+.h2,
+.h2 {
+  font-size: 1.75rem;
+}
+
+h3,
+.h3,
+.h3 {
+  font-size: 1.25rem;
+}
+
+h4,
+.h4,
+.h4 {
+  font-size: 1rem;
+}
+
+h5,
+.h5,
+.h5 {
+  font-size: 0.875rem;
+}
+
+h6,
+.h6,
+.h6 {
+  font-size: 0.813rem;
+}
+
+p {
+  font-size: 0.813rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.3rem;
+}
+
+.textPrimary {
+  color: $primary !important;
+}
+
+.textInfo {
+  color: $info !important;
+}
+
+.textDanger {
+  color: $danger !important;
+}
+
+.textSuccess {
+  color: $success !important;
+}
+
+.textWarning {
+  color: $warning !important;
+}
+
+.textSecondary {
+  color: $secondary !important;
+}
+
+.textLight {
+  color: $light !important;
+}
+
+.textWhite {
+  color: $white !important;
+}
+
+.textDark {
+  color: $dark !important;
+}
