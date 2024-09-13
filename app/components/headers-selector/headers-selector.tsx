@@ -1,6 +1,3 @@
-/* eslint-disable react-compiler/react-compiler */
-//https://github.com/facebook/react/issues/30745
-
 import { useSearchParams } from '@remix-run/react';
 import _ from 'lodash';
 import { useCallback, useContext, useEffect, useRef } from 'react';
@@ -56,12 +53,9 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
       props.onHeadersChange(currentSearchparams);
     }
 
-    if (
-      props.addDefaultContentType &&
-      headersArray.length === 0 &&
-      paramsArray.length > 1 &&
-      !paramsArray.slice(1).some(el => el)
-    ) {
+    const isNewRequestPage = props.isGraphQl ? !paramsArray.some(el => el) : !paramsArray.slice(1).some(el => el);
+
+    if (props.addDefaultContentType && headersArray.length === 0 && isNewRequestPage) {
       setHeader('Content-Type', 'application/json', true);
     }
   }, []);
@@ -103,29 +97,33 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
       </fieldset>
       {headersArray.length > 0 ? (
         <section className={s.headersTabsContainer}>
-          {headersArray.map(header => {
-            return (
-              <div key={header[0]} className={classNames(s.tab)}>
-                <button
-                  type="button"
-                  className={classNames(s.btn, s.btnLight, s.tabBtn)}
-                  onClick={() => {
-                    setHeaderToForm(header[0], header[1]);
-                  }}>
-                  {header[0]}: {header[1]}
-                </button>
+          {headersArray.map(
+            //https://github.com/facebook/react/issues/30745
+            // eslint-disable-next-line react-compiler/react-compiler
+            header => {
+              return (
+                <div key={header[0]} className={classNames(s.tab)}>
+                  <button
+                    type="button"
+                    className={classNames(s.btn, s.btnLight, s.tabBtn)}
+                    onClick={() => {
+                      setHeaderToForm(header[0], header[1]);
+                    }}>
+                    {header[0]}: {header[1]}
+                  </button>
 
-                <button
-                  type="button"
-                  className={classNames(s.removeBtn, s.btn, s.btnPrimary)}
-                  onClick={() => {
-                    setHeader(header[0], header[1], false);
-                  }}>
-                  <img src="/delete_white.svg" alt="delete-header" loading="lazy" />
-                </button>
-              </div>
-            );
-          })}
+                  <button
+                    type="button"
+                    className={classNames(s.removeBtn, s.btn, s.btnPrimary)}
+                    onClick={() => {
+                      setHeader(header[0], header[1], false);
+                    }}>
+                    <img src="/delete_white.svg" alt="delete-header" loading="lazy" />
+                  </button>
+                </div>
+              );
+            },
+          )}
         </section>
       ) : null}
     </div>

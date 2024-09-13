@@ -7,4 +7,5 @@ export interface IHeadersSelectorProps {
   addDefaultContentType: boolean;
   onHeadersChange: (headers: THeaders) => void;
   showTitle?: boolean;
+  isGraphQl?: boolean;
 }
