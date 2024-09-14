@@ -9,7 +9,7 @@ export default function MainPage() {
   const { langRecord } = useContext(LangContext);
   return (
     <>
-      <section className={s.welcomeContainer}>
+      <section className={s.welcomeContainer} data-testid="mainpage-section">
         <div className={s.wrapper}>
           <div className={classNames(s.display1, s.textWhite, s.welcomeBlock)}>
             {isAuthorized ? `${langRecord.mainPage.welcome_back}, [UserName]!` : `${langRecord.mainPage.welcome}!`}

@@ -12,9 +12,9 @@ export default function Header() {
       <div className={styles.wrapper}>
         <div className={styles.headerContent}>
           <div>
-            <Link className={classNames(styles.link, styles.logoText, styles.logoContainer)} to="/">
+            <Link className={classNames(styles.link, styles.logoContainer)} to="/">
               <img className={styles.logo} src="/logo.svg" alt="logo" />
-              GraphiQL
+              <p className={classNames(styles.logoText)}>GraphiQL</p>
             </Link>
             <Link className={styles.link} to="/get/">
               [REST Client]

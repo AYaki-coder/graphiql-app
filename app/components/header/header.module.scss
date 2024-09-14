@@ -5,6 +5,12 @@
   background-color: $primary;
   padding: 1rem 0;
   width: 100%;
+
+  & .logoText {
+    @media #{$media-mobile} {
+      display: none;
+    }
+  }
 }
 
 .headerContent {
