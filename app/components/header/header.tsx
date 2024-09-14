@@ -1,5 +1,5 @@
 import { Link, useLoaderData, useNavigate } from '@remix-run/react';
-import { useCallback, useContext, useEffect, useRef } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { LangContext, LANGS } from '../lang-context/lang-context';
 import classNames from 'classnames';
 import styles from './header.module.scss';
@@ -10,6 +10,7 @@ export default function Header() {
   const langContext = useContext(LangContext);
   const navigate = useNavigate();
   const data = useLoaderData<IUser | null>();
+  const [isSticky, setIsSticky] = useState<boolean>(false);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -47,8 +48,25 @@ export default function Header() {
     navigate('/signin', { replace: true });
   }, [navigate]);
 
+  // on render, set listener
+  useEffect(() => {
+    console.log('hello');
+    window.addEventListener('scroll', changeSticky);
+    return () => {
+      window.removeEventListener('scroll', changeSticky);
+    };
+  }, []);
+
+  const changeSticky = () => {
+    /* Method that will fix header after a specific scrollable */
+    const scrollTop = window.scrollY;
+    const stickyClass = scrollTop >= 250 ? true : false;
+    setIsSticky(stickyClass);
+    console.log(stickyClass);
+  };
+
   return (
-    <header className={styles.header}>
+    <header className={classNames(styles.header, { [styles.isSticky]: isSticky })}>
       <div className={styles.wrapper}>
         <div className={styles.headerContent}>
           <div>
@@ -71,9 +89,7 @@ export default function Header() {
             <Link className={styles.link} to="/signup">
               [Sign up]
             </Link>
-            {/* <Link className={styles.link} to="/signout">
-              [Sign Out]
-            </Link> */}
+
             <button onClick={onSignOutClick}>Sign Out</button>
           </div>
 

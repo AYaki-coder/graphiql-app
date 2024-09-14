@@ -5,12 +5,21 @@
   background-color: $primary;
   padding: 1rem 0;
   width: 100%;
+  position: sticky; /* Fixed position - sit on top of the page */
+  top: 0;
+  transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
 
   & .logoText {
     @media #{$media-mobile} {
       display: none;
     }
   }
+}
+
+.isSticky {
+  background-color: $dark;
+  color: $primary;
+  width: 100%;
 }
 
 .headerContent {
