@@ -8,4 +8,8 @@ export interface IHeadersSelectorProps {
   onHeadersChange: (headers: THeaders) => void;
   showTitle?: boolean;
   isGraphQl?: boolean;
+  className?: string;
+  titleClassName?: string;
+  inputsClassName?: string;
+  tabsClassName?: string;
 }

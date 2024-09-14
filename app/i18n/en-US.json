@@ -4,6 +4,15 @@
     "headerNameInputPlaceholder": "header name",
     "headerValueInputPlaceholder": "header value"
   },
+  "restVariablesSelector": {
+    "titleText": "Variables",
+    "variableNameInputPlaceholder": "variable name",
+    "variableValueInputPlaceholder": "variable value"
+  },
+  "restPage": {
+    "bodyEditorPlaceholder": "enter request body",
+    "requestButton": "Send request"
+  },
   "restPage_example": {
     "submitButton_example": "Submit",
     "resetButton_example": "Reset",
