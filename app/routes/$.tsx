@@ -5,10 +5,6 @@ import { REST_VERBS } from '~/consts/restful.consts';
 import { getUserSession } from '~/firebase/session';
 import RestPage from '~/pages/rest/rest-page';
 
-// export function shouldRevalidate() {
-//   return false;
-// }
-
 function isRestRoutes(params: Params<string>) {
   const fullPath = params['*'] ?? '';
   const redirectUrl = '/';

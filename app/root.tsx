@@ -27,7 +27,6 @@ import { IUser } from './models/root';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const sessionUser = await getUserSession(request);
-  console.log(sessionUser, 'sessionUser', sessionUser?.firebase.identities);
   if (sessionUser) {
     const user: IUser = {
       email: sessionUser.email ?? '',

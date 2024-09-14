@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="78" viewBox="0 0 80 78" fill="none">
+<g clip-path="url(#clip0_3_9663)">
+
+<path d="M40 45 C43 45 46 42 46 38 C46 34 43 31 40 31 C36 31 33 34 33 38 C 33 42 36 45 40 45Z" fill="#139FCD"/>
+<path d="M40 51 C 59 51 75 45 75 38 C 75 31 59 24 40 24 C 20 24 4 31 4 38 C 4  45 20 51 40 51Z" stroke="#139FCD" stroke-width="3"/>
+<path d="M 29 45 C 38 62 51 72 57 69 C 64 65 61 48 51 31 C 42 14 28 4 22 7 C 15 11 18  28 28 45Z" stroke="#139FCD" stroke-width="3"/>
+<path d="M 28 31 C18 48 15 65 22 69 C 28 72 42 62 51 45 C61 28 64 14 57 7 C 51 4 38 14 28 31Z" stroke="#139FCD" stroke-width="3"/>
+</g>
+
+</svg>

@@ -2,10 +2,11 @@ import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import { Link, Form, redirect } from '@remix-run/react';
 import { firebaseSignIn } from '~/firebase/firebase';
 import { createUserSession, getUserSession } from '~/firebase/session';
+import s from '../styles/signin-signout.module.scss';
+import classNames from 'classnames';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const sessionUser = await getUserSession(request);
-  console.log(sessionUser, 'sessionUser', sessionUser?.firebase.identities);
   if (sessionUser) {
     return redirect('/');
   }
@@ -32,20 +33,24 @@ export default function Login() {
         <p>
           <label>
             Email
-            <input type="email" name="email" />
+            <input className={classNames(s.emailInput, s.formControl)} type="email" name="email" />
           </label>
         </p>
         <p>
           <label>
             Password
-            <input type="password" name="password" />
+            <input className={classNames(s.passwordInput, s.formControl)} type="password" name="password" />
           </label>
         </p>
 
-        <button type="submit">Login</button>
+        <button type="submit" className={classNames(s.btnPrimary, s.btn)}>
+          Login
+        </button>
       </Form>
 
-      <Link to="/signup">Create Account</Link>
+      <Link to="/signup" className={classNames(s.btnLight, s.btn)}>
+        Create Account
+      </Link>
     </div>
   );
 }

@@ -1,8 +1,7 @@
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { useParams, useNavigate, useLoaderData, redirect, useSearchParams } from '@remix-run/react';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import { useParams } from '@remix-run/react';
 import classNames from 'classnames';
-import { LoaderFunctionArgs } from '@remix-run/node';
-import { IApiResponse, IReq } from '~/models/rest';
+import { IApiResponse } from '~/models/rest';
 import s from './rest-page.module.scss';
 import { REST_VERBS } from '~/consts/restful.consts';
 import _ from 'lodash';
@@ -17,7 +16,6 @@ import { useCustomRestNavigate } from '~/hooks/useCustomRestNavigate';
 import { THeaders } from '~/models/headers-selector';
 
 export default function RestPage() {
-  const invoices = useLoaderData<[string, string, string | undefined]>();
   const [result, setResult] = useState<IApiResponse | null>();
   const [headers, setHeaders] = useState<THeaders>({});
   const { langRecord } = useContext(LangContext);
@@ -122,82 +120,84 @@ export default function RestPage() {
   }, [setResult, method, url, headers, isGetMethod, bodyObj]);
 
   return (
-    <div className={s.page}>
-      <h2 className={classNames(s.title, s.contentWrapper)}>REST Client</h2>
-      <div className={classNames(s.row, s.contentWrapper)}>
-        <select
-          name="method"
-          className={classNames(s.formControl, s.method)}
-          id="method"
-          onChange={onMethodChange}
-          value={method.toUpperCase()}>
-          {REST_VERBS.map(name => (
-            <option key={name}>{name}</option>
-          ))}
-        </select>
-        <input
-          type="text"
-          id="url"
-          autoComplete="off"
-          className={classNames(s.formControl, s.url)}
-          value={url}
-          onChange={onUrlChange}
-        />
-      </div>
-      <div className={classNames(s.row, s.contentWrapper)}>
-        <HeadersSelector
-          className={s.cardView}
-          addDefaultContentType={true}
-          showTitle={true}
-          notifyOnChange={true}
-          notifyOnInit={true}
-          onHeadersChange={h => setHeaders(h)}
-        />
-      </div>
-      <div className={classNames(s.contentWrapper, s.bodyRow, { [s.hidden]: isGetMethod })}>
-        <div className={s.bodySection}>
-          <RestVariablesSelector
-            className={s.cardView}
-            showTitle={true}
-            disabled={isGetMethod}
-            onVariablesChange={onVariablesChange}
-            variables={bodyObj.variables}
+    <div className={s.wrapper}>
+      <div className={s.page}>
+        <h2>REST Client</h2>
+        <div className={classNames(s.row)}>
+          <select
+            name="method"
+            className={classNames(s.formControl, s.method)}
+            id="method"
+            onChange={onMethodChange}
+            value={method.toUpperCase()}>
+            {REST_VERBS.map(name => (
+              <option key={name}>{name}</option>
+            ))}
+          </select>
+          <input
+            type="text"
+            id="url"
+            autoComplete="off"
+            className={classNames(s.formControl, s.url)}
+            value={url}
+            onChange={onUrlChange}
           />
-
-          {isGetMethod ? (
-            <textarea
-              className={classNames(s.formControl, s.bodyEditor)}
-              name="bodyEditor"
-              placeholder={langRecord.restPage?.bodyEditorPlaceholder ?? ''}
-              id=""
-              onBlur={onBodyChange}
-              value={bodyObj.body}
-              disabled={isGetMethod}></textarea>
-          ) : (
-            <textarea
-              className={classNames(s.formControl, s.bodyEditor)}
-              name="bodyEditor"
-              placeholder={langRecord.restPage?.bodyEditorPlaceholder ?? ''}
-              id=""
-              onBlur={onBodyChange}
-              defaultValue={bodyObj.body}
-              disabled={isGetMethod}></textarea>
-          )}
         </div>
-      </div>
-      <div className={classNames(s.row, s.contentWrapper)}>
-        <button className={classNames(s.submitButton, s.btn, s.btnPrimary)} onClick={onSendClick}>
-          {langRecord.restPage?.requestButton ?? ''}
-        </button>
-      </div>
-      <div className={classNames(s.contentWrapper)}>
-        <div className={classNames(s.resultContainer, s.cardView)}>
-          {!!result && (
-            <ResponseView
-              data={result.isError ? result.errorText : result.response}
-              status={result.status}
-              type={result.isError ? ResponseViewType.TEXT : ResponseViewType.JSON}></ResponseView>
-          )}
+        <div className={classNames(s.row, s.contentWrapper)}>
+          <HeadersSelector
+            className={s.cardView}
+            addDefaultContentType={true}
+            showTitle={true}
+            notifyOnChange={true}
+            notifyOnInit={true}
+            onHeadersChange={h => setHeaders(h)}
+          />
+        </div>
+        <div className={classNames(s.contentWrapper, s.bodyRow, { [s.hidden]: isGetMethod })}>
+          <div className={s.bodySection}>
+            <RestVariablesSelector
+              className={s.cardView}
+              showTitle={true}
+              disabled={isGetMethod}
+              onVariablesChange={onVariablesChange}
+              variables={bodyObj.variables}
+            />
+
+            {isGetMethod ? (
+              <textarea
+                className={classNames(s.formControl, s.bodyEditor)}
+                name="bodyEditor"
+                placeholder={langRecord.restPage?.bodyEditorPlaceholder ?? ''}
+                id=""
+                onBlur={onBodyChange}
+                value={bodyObj.body}
+                disabled={isGetMethod}></textarea>
+            ) : (
+              <textarea
+                className={classNames(s.formControl, s.bodyEditor)}
+                name="bodyEditor"
+                placeholder={langRecord.restPage?.bodyEditorPlaceholder ?? ''}
+                id=""
+                onBlur={onBodyChange}
+                defaultValue={bodyObj.body}
+                disabled={isGetMethod}></textarea>
+            )}
+          </div>
+        </div>
+        <div className={classNames(s.row, s.contentWrapper)}>
+          <button className={classNames(s.submitButton, s.btn, s.btnPrimary)} onClick={onSendClick}>
+            {langRecord.restPage?.requestButton ?? ''}
+          </button>
+        </div>
+        <div className={classNames(s.contentWrapper)}>
+          <div className={classNames(s.resultContainer, s.cardView)}>
+            {!!result && (
+              <ResponseView
+                data={result.isError ? result.errorText : result.response}
+                status={result.status}
+                type={result.isError ? ResponseViewType.TEXT : ResponseViewType.JSON}></ResponseView>
+            )}
+          </div>
         </div>
       </div>
     </div>

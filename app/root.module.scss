@@ -14,3 +14,12 @@
   color: $dark;
   background-color: #edeef2;
 }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}

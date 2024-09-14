@@ -49,48 +49,55 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Link className={styles.link} to="/">
-        [Main Page]
-      </Link>
-      <Link className={styles.link} to="/get/">
-        [REST Client]
-      </Link>
-      <Link className={styles.link} to="/graphql/">
-        [GraphiQL Client]
-      </Link>
-      <Link className={styles.link} to="/history">
-        [History]
-      </Link>
-      <Link className={styles.link} to="/signin">
-        [Sign In]
-      </Link>
-      <Link className={styles.link} to="/signup">
-        [Sign up]
-      </Link>
-      {/* <Link className={styles.link} to="/signout">
-        [Sign Out]
-      </Link> */}
-      <button onClick={onSignOutClick}>Sign Out</button>
+      <div className={styles.wrapper}>
+        <div className={styles.headerContent}>
+          <div>
+            <Link className={classNames(styles.link, styles.logoContainer)} to="/">
+              <img className={styles.logo} src="/logo.svg" alt="logo" />
+              <p className={classNames(styles.logoText)}>GraphiQL</p>
+            </Link>
+            <Link className={styles.link} to="/get/">
+              [REST Client]
+            </Link>
+            <Link className={styles.link} to="/graphql/">
+              [GraphiQL Client]
+            </Link>
+            <Link className={styles.link} to="/history">
+              [History]
+            </Link>
+            <Link className={styles.link} to="/signin">
+              [Sign In]
+            </Link>
+            <Link className={styles.link} to="/signup">
+              [Sign up]
+            </Link>
+            {/* <Link className={styles.link} to="/signout">
+              [Sign Out]
+            </Link> */}
+            <button onClick={onSignOutClick}>Sign Out</button>
+          </div>
 
-      <div className={styles.langContainer}>
-        <button
-          className={classNames(styles.btn, styles.langButton, {
-            [styles.btnPrimary]: langContext?.langType === LANGS.en,
-            [styles.selected]: langContext?.langType === LANGS.en,
-            [styles.btnLight]: langContext?.langType !== LANGS.en,
-          })}
-          onClick={() => langContext?.changeLang(LANGS.en)}>
-          En
-        </button>
-        <button
-          className={classNames(styles.btn, styles.langButton, {
-            [styles.btnPrimary]: langContext?.langType !== LANGS.en,
-            [styles.selected]: langContext?.langType === LANGS.ru,
-            [styles.btnLight]: langContext?.langType === LANGS.en,
-          })}
-          onClick={() => langContext?.changeLang(LANGS.ru)}>
-          Ru
-        </button>
+          <div className={styles.langContainer}>
+            <button
+              className={classNames(styles.btn, styles.langButton, {
+                [styles.btnPrimary]: langContext?.langType === LANGS.en,
+                [styles.selected]: langContext?.langType === LANGS.en,
+                [styles.btnLight]: langContext?.langType !== LANGS.en,
+              })}
+              onClick={() => langContext?.changeLang(LANGS.en)}>
+              En
+            </button>
+            <button
+              className={classNames(styles.btn, styles.langButton, {
+                [styles.btnPrimary]: langContext?.langType !== LANGS.en,
+                [styles.selected]: langContext?.langType === LANGS.ru,
+                [styles.btnLight]: langContext?.langType === LANGS.en,
+              })}
+              onClick={() => langContext?.changeLang(LANGS.ru)}>
+              Ru
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
