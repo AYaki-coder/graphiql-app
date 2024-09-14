@@ -37,6 +37,88 @@ export default function MainPage() {
           </div>
         </div>
       </section>
+      <div className={s.wrapper}>
+        <section>
+          <h2> Project</h2>
+          <div className={s.twoColumn}>
+            <div className={s.card}>
+              <img src="/logo.png" alt="logo" />
+            </div>
+
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor ipsa cupiditate iste error sapiente ea?
+              Quam eius autem repellat, esse ad beatae amet voluptates eaque consequatur commodi tempore facere earum?
+            </p>
+          </div>
+          <Link className={classNames(s.btn, s.btnLg, s.btnPrimary)} to={'/'}>
+            More Info
+          </Link>
+        </section>
+        <section>
+          <h2>Developers</h2>
+          <div className={s.cardSection}>
+            <div className={s.card}>
+              <div className={s.cardHeader}>
+                <img className={s.cardImage} src="/i.webp" alt="cat" />
+                <h4>Lorem ipsum dolor sit</h4>
+              </div>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex adipisci fugiat repudiandae facilis beatae
+                dignissimos voluptate quas incidunt expedita neque nemo quisquam, necessitatibus alias quasi quod vitae
+                dolor sit obcaecati.
+              </p>
+              <Link className={classNames(s.btn, s.btnPrimary, s.cardBtn)} to={'/'}>
+                <img className={s.btnIcon} src="/github-mark-white.svg" alt="github-icon" />
+                GitHub
+              </Link>
+            </div>
+            <div className={s.card}>
+              <div className={s.cardHeader}>
+                <img className={s.cardImage} src="/i.webp" alt="cat" />
+                <h4>Lorem ipsum dolor sit</h4>
+              </div>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex adipisci fugiat repudiandae facilis beatae
+                dignissimos voluptate quas incidunt expedita neque nemo quisquam, necessitatibus alias quasi quod vitae
+                dolor sit obcaecati.
+              </p>
+              <Link className={classNames(s.btn, s.btnPrimary, s.cardBtn)} to={'/'}>
+                <img className={s.btnIcon} src="/github-mark-white.svg" alt="github-icon" />
+                GitHub
+              </Link>
+            </div>
+            <div className={s.card}>
+              <div className={s.cardHeader}>
+                <img className={s.cardImage} src="/i.webp" alt="cat" />
+                <h4>Lorem ipsum dolor sit</h4>
+              </div>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex adipisci fugiat repudiandae facilis beatae
+                dignissimos voluptate quas incidunt expedita neque nemo quisquam, necessitatibus alias quasi quod vitae
+                dolor sit obcaecati.
+              </p>
+              <Link className={classNames(s.btn, s.btnPrimary, s.cardBtn)} to={'/'}>
+                <img className={s.btnIcon} src="/github-mark-white.svg" alt="github-icon" />
+                GitHub
+              </Link>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Course</h2>
+          <div className={s.twoColumn}>
+            <img className={s.sectionImg} src="/react-logo.svg" alt="react-logo" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ratione iste, nesciunt, aperiam sequi nisi
+              consectetur temporibus earum deleniti quo dignissimos dicta praesentium nostrum aliquid, sit id veniam
+              maiores suscipit.
+            </p>
+          </div>
+          <Link className={classNames(s.btn, s.btnLg, s.btnPrimary)} to={'/'}>
+            More Info
+          </Link>
+        </section>
+      </div>
     </>
   );
 }

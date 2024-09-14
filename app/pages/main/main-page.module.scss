@@ -35,3 +35,96 @@
     width: 100%;
   }
 }
+
+section {
+  margin-bottom: 4rem;
+
+  & h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+.twoColumn {
+  display: flex;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  @media #{$media-mobile} {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.cardSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  @media #{$media-tablets} {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media #{$media-mobile} {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.card {
+  background-color: $white;
+  // background-color: rgba(2, 171, 254, 0.2);
+  border-radius: $border-radius;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @media #{$media-tablets} {
+    padding: 1.5rem 1rem;
+  }
+
+  @media #{$media-mobile} {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+  @media #{$media-mobile} {
+    gap: 1rem;
+  }
+}
+
+.cardImage {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: $border-radius;
+}
+
+.cardBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: fit-content;
+  width: 30%;
+  align-self: center;
+  @media #{$media-tablets} {
+    width: 100%;
+  }
+
+  @media #{$media-mobile} {
+    width: 100%;
+  }
+}
+
+.btnIcon {
+  width: 1rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.sectionImg {
+  width: 20%;
+  height: auto;
+}

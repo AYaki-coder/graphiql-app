@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <div className={styles.footerContent}>
-          <nav>
+          <nav className={styles.linkContainer}>
             <a className={styles.ghLink} href="https://github.com/AV-Shell">
               <img className={styles.ghIcon} src="/github-mark.svg" alt="GitHub-logo" loading="lazy" />
               AV-Shell

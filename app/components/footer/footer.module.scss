@@ -22,6 +22,14 @@
   }
 }
 
+.linkContainer {
+  display: flex;
+  @media #{$media-mobile} {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
 .ghLink {
   display: inline-flex;
   gap: 0.5rem;
