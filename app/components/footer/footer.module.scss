@@ -1,11 +1,17 @@
 @import '../../styles/color.scss';
+@import './../../styles/global.scss';
 
 .footer {
+  width: 100%;
+  background-color: $gray-light;
+}
+
+.footerContent {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: $gray-light;
+  padding: 1rem 0;
 }
 
 .logo {
@@ -13,6 +19,14 @@
   height: 2rem;
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.linkContainer {
+  display: flex;
+  @media #{$media-mobile} {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
