@@ -1,6 +1,6 @@
 @import '../../styles/global.scss';
 
-.headersContainer {
+.variablesContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -8,32 +8,45 @@
   gap: 16px;
   flex: 1 1 100%;
 
-  .headersTitle {
+  .variablesTitle {
     margin: 10px 0 0;
   }
 
   .fieldset {
-    flex: 1 1 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 60px;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'nameInput button'
+      'valueInput button';
+    flex-direction: column;
     justify-content: stretch;
     align-items: center;
-    gap: 10px;
+    grid-gap: 2px 10px;
 
-    .headerInput {
+    .variableInput {
       flex: 1 1 100%;
+      padding: 2px 8px;
     }
 
+    .nameInput {
+      grid-area: nameInput;
+    }
+    .valueInput {
+      grid-area: valueInput;
+    }
     .addBtn {
       padding: 10px 6px;
+      grid-area: button;
     }
   }
 
-  .headersTabsContainer {
+  .variablesTabsContainer {
     display: flex;
+
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 16px;
-    flex: 1 1 100%;
+    gap: 6px;
 
     .tab {
       display: flex;
@@ -48,10 +61,12 @@
 
     .tabBtn {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 6px;
       font-size: 16px;
+      padding: 2px;
       &:hover {
         box-shadow: 0 0 6px 0 yellow;
       }
@@ -59,7 +74,7 @@
 
     .removeBtn {
       pointer-events: all;
-      padding: 6px;
+      padding: 2px;
 
       &:hover {
         box-shadow: 0 0 6px 0 red;

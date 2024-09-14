@@ -1,6 +1,68 @@
 @import '../../styles/global.scss';
 
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 16px;
+}
+
 .actions {
   display: flex;
   gap: 20px;
+}
+
+.contentWrapper {
+  padding: 0 16px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+
+  .method {
+    flex: 0 0 auto;
+  }
+
+  .url {
+    flex: 1 0 auto;
+  }
+}
+
+.displayNone {
+  display: none !important;
+}
+
+.bodyRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.5s ease-in-out;
+
+  &.hidden {
+    grid-template-rows: 0fr;
+  }
+}
+
+.bodySection {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto;
+  gap: 6px;
+
+  .bodyEditor {
+    min-height: 300px;
+  }
+}
+
+.submitButton {
+  width: 100%;
+}
+
+.resultContainer {
+  display: block;
+  width: inherit;
+  overflow: scroll;
 }

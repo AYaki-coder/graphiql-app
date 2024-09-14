@@ -4,6 +4,15 @@
     "headerNameInputPlaceholder": "имя заголовка",
     "headerValueInputPlaceholder": "значение заголовка"
   },
+  "restVariablesSelector": {
+    "titleText": "Переменные",
+    "variableNameInputPlaceholder": "имя переменной",
+    "variableValueInputPlaceholder": "значение переменной"
+  },
+  "restPage": {
+    "bodyEditorPlaceholder": "введите тело запроса",
+    "requestButton": "Отправить запрос"
+  },
   "restPage_example": {
     "submitButton_example": "Отправить",
     "resetButton_example": "Сбросить",

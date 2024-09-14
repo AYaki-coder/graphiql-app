@@ -25,9 +25,9 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
     (name: string, value: string, isSet: boolean) => {
       let newHeaders: THeaders;
       if (isSet) {
-        newHeaders = { ...currentSearchparams, [name]: value };
+        newHeaders = { ...currentSearchparams, [name.toLowerCase()]: value.toLowerCase() };
       } else {
-        newHeaders = _.omit(currentSearchparams, [name]);
+        newHeaders = _.omit(currentSearchparams, [name.toLowerCase()]);
       }
 
       if (props.notifyOnChange) {
@@ -53,7 +53,7 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
       props.onHeadersChange(currentSearchparams);
     }
 
-    const isNewRequestPage = props.isGraphQl ? !paramsArray.some(el => el) : !paramsArray.slice(1).some(el => el);
+    const isNewRequestPage = props.isGraphQl ? !paramsArray[0] : !paramsArray[1];
 
     if (props.addDefaultContentType && headersArray.length === 0 && isNewRequestPage) {
       setHeader('Content-Type', 'application/json', true);
@@ -61,10 +61,14 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
   }, []);
 
   return (
-    <div className={s.headersContainer}>
-      {props.showTitle && <h4 className={s.headersTitle}>{langRecord.headersSelector?.titleText ?? ''}:</h4>}
+    <div className={classNames(s.headersContainer, props.className)}>
+      {props.showTitle && (
+        <h4 className={classNames(s.headersTitle, props.titleClassName)}>
+          {langRecord.headersSelector?.titleText ?? ''}:
+        </h4>
+      )}
 
-      <fieldset className={s.fieldset}>
+      <section className={classNames(s.fieldset, props.inputsClassName)}>
         <input
           type="text"
           className={classNames(s.headerInput, s.formControl)}
@@ -79,7 +83,7 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
         />
         <button
           type="button"
-          className={classNames(s.btn, s.btnPrimary, s.addBtn)}
+          className={classNames(s.btn, s.btnLight, s.addBtn)}
           onClick={event => {
             event.preventDefault();
 
@@ -92,11 +96,11 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
               setHeader(name, value, true);
             }
           }}>
-          <img src="/add_white.svg" alt="add-header" loading="lazy" />
+          <img src="/add_primary.svg" alt="add-header" loading="lazy" />
         </button>
-      </fieldset>
+      </section>
       {headersArray.length > 0 ? (
-        <section className={s.headersTabsContainer}>
+        <section className={classNames(s.headersTabsContainer, props.tabsClassName)}>
           {headersArray.map(
             //https://github.com/facebook/react/issues/30745
             // eslint-disable-next-line react-compiler/react-compiler

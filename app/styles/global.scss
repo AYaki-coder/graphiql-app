@@ -14,10 +14,17 @@
   font-size: 0.813rem;
   border-radius: 0.375rem;
   transition:
-    color 0.15s ease-in-out,
-    background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+    color 0.25s ease-in-out,
+    background-color 0.25s ease-in-out,
+    border-color 0.25s ease-in-out,
+    box-shadow 0.25s ease-in-out;
+
+  &[disabled] {
+    color: #979797;
+    background-color: #e9ecef;
+    opacity: 1;
+    pointer-events: none;
+  }
 }
 
 .btnPrimary {
@@ -112,4 +119,17 @@
     opacity: 1;
     pointer-events: none;
   }
+}
+
+.cardView {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e7eaed;
+  border-radius: 0.375rem;
+  padding: 16px;
 }
