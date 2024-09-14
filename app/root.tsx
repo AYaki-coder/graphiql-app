@@ -1,11 +1,12 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { LinksFunction } from '@remix-run/node';
+import { ActionFunctionArgs, LinksFunction } from '@remix-run/node';
 
 import { isRouteErrorResponse, useRouteError } from '@remix-run/react';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import s from './root.module.scss';
 import { LangProvider } from './components/lang-context/lang-context';
+import { sessionSignOut } from './firebase/session';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -19,6 +20,29 @@ export const links: LinksFunction = () => [
     href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
   },
 ];
+
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { getUserSession } from '~/firebase/session';
+import { IUser } from './models/root';
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const sessionUser = await getUserSession(request);
+  console.log(sessionUser, 'sessionUser', sessionUser?.firebase.identities);
+  if (sessionUser) {
+    const user: IUser = {
+      email: sessionUser.email ?? '',
+      id: sessionUser.user_id ?? '',
+      sessionExpireTime: Date.now() + 6 * 60 * 1000, // sessionUser.exp * 1000,
+    };
+
+    return user;
+  }
+  return null;
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+  return sessionSignOut(request);
+}
 
 export default function App() {
   return (

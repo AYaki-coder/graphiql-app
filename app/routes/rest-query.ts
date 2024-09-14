@@ -1,6 +1,10 @@
-import { ActionFunctionArgs, json, TypedResponse } from '@remix-run/node';
+import { ActionFunctionArgs, json, redirect, TypedResponse } from '@remix-run/node';
 import _ from 'lodash';
 import { IApiResponse, IReq } from '~/models/rest';
+
+export async function loader() {
+  return redirect('/');
+}
 
 export async function action({ request }: ActionFunctionArgs): Promise<TypedResponse<IApiResponse>> {
   const { req }: { req: IReq } = await request.json();
