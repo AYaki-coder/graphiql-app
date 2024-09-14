@@ -46,6 +46,7 @@ section {
 
 .twoColumn {
   display: flex;
+  flex: auto 1;
   gap: 4rem;
   margin-bottom: 3rem;
   @media #{$media-mobile} {
@@ -55,7 +56,8 @@ section {
 }
 
 .cardSection {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   gap: 2rem;
   @media #{$media-tablets} {
@@ -71,11 +73,11 @@ section {
 
 .card {
   background-color: $white;
-  // background-color: rgba(2, 171, 254, 0.2);
   border-radius: $border-radius;
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
+
   gap: 2rem;
   @media #{$media-tablets} {
     padding: 1.5rem 1rem;
@@ -86,10 +88,15 @@ section {
   }
 }
 
+.cardSpaceBw {
+  justify-content: space-between;
+}
+
 .cardHeader {
   display: flex;
   gap: 2rem;
   align-items: flex-end;
+  margin-bottom: 3rem;
   @media #{$media-mobile} {
     gap: 1rem;
   }
@@ -100,6 +107,65 @@ section {
   height: 6rem;
   object-fit: cover;
   border-radius: $border-radius;
+}
+
+.projectContainer {
+  display: grid;
+  gap: 3rem;
+  grid-template-areas:
+    'text  text logo feature1 feature1 feature2'
+    'text text logo feature1  feature1 feature2'
+    'text text logo feature4 feature3 feature3'
+    'text1 text1 logo feature4 feature3 feature3';
+  margin-bottom: 3rem;
+}
+
+.cardInfo {
+  background-color: $info-bg;
+  border: 1px solid $info;
+}
+
+.cardPrimary {
+  background-color: $primary;
+  color: $white;
+}
+
+.projectText {
+  grid-area: text;
+}
+
+.projectText1 {
+  grid-area: text1;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  grid-area: logo;
+}
+
+.logoText {
+  font-size: 4rem;
+}
+
+.feature1 {
+  grid-area: feature1;
+}
+.feature2 {
+  grid-area: feature2;
+}
+.feature3 {
+  grid-area: feature3;
+}
+.feature4 {
+  grid-area: feature4;
+}
+
+.logoIcon {
+  width: 90%;
+  height: auto;
 }
 
 .cardBtn {
@@ -125,6 +191,10 @@ section {
 }
 
 .sectionImg {
-  width: 20%;
+  flex: 0 0 20%;
   height: auto;
+}
+
+.sectionText {
+  flex: 1 2 65%;
 }

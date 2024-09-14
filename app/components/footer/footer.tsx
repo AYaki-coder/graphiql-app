@@ -10,7 +10,7 @@ export default function Footer() {
               <img className={styles.ghIcon} src="/github-mark.svg" alt="GitHub-logo" loading="lazy" />
               AV-Shell
             </a>
-            <a className={styles.ghLink} href="https://github.com/users/AYaki-coder">
+            <a className={styles.ghLink} href="https://github.com/AYaki-coder">
               <img className={styles.ghIcon} src="/github-mark.svg" alt="GitHub-logo" loading="lazy" />
               AYaki-coder
             </a>

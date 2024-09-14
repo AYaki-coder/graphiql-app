@@ -35,3 +35,14 @@
   gap: 8px;
   padding: 8px 4px;
 }
+
+.logoContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+}
