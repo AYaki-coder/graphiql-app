@@ -55,7 +55,7 @@ export default function Login() {
         submit(formRef.current);
       }
     } catch (error) {
-      console.log(_.get(error, 'message', ''));
+      //
     }
   };
 

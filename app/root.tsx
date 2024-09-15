@@ -35,7 +35,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const user: IUser = {
       email: sessionUser.email ?? '',
       id: sessionUser.user_id ?? '',
-      sessionExpireTime: Date.now() + 6 * 60 * 1000, // sessionUser.exp * 1000,
+      sessionExpireTime: sessionUser.exp * 1000,
     };
 
     return user;

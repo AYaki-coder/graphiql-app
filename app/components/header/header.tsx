@@ -29,7 +29,7 @@ export default function Header() {
               });
               navigate('/signin', { replace: true });
             } catch (error) {
-              console.log('signOutError', _.get(error, 'message', 'Something went wrong on logout'));
+              //
             }
         },
         5 * 60 * 1000,

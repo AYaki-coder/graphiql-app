@@ -1,20 +1,24 @@
-import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
-import { Link, Form, redirect } from '@remix-run/react';
-import { firebaseSignIn } from '~/firebase/firebase';
-import { createUserSession, getUserSession } from '~/firebase/session';
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { redirect, useLoaderData } from '@remix-run/react';
+import { getUserSession } from '~/firebase/session';
+import { IUser } from '../models/root';
+import { HistoryPage } from '~/pages/history/history-page';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const sessionUser = await getUserSession(request);
   if (!sessionUser) {
     return redirect('/signin');
   }
-  return null;
+  const user: IUser = {
+    email: sessionUser.email ?? '',
+    id: sessionUser.user_id ?? '',
+    sessionExpireTime: sessionUser.exp * 1000,
+  };
+
+  return user;
 }
 
 export default function History() {
-  return (
-    <div className="history">
-      <h1>History Page</h1>
-    </div>
-  );
+  const data = useLoaderData<IUser>();
+  return <HistoryPage user={data} />;
 }

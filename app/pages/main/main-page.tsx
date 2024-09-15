@@ -3,16 +3,21 @@ import s from './main-page.module.scss';
 import classNames from 'classnames';
 import { useContext } from 'react';
 import { LangContext } from '~/components/lang-context/lang-context';
+import { IUser } from '~/models/root';
 
-export default function MainPage() {
-  const isAuthorized = true;
+interface IHistoryPageProps {
+  user: IUser | null;
+}
+
+export function MainPage({ user }: IHistoryPageProps) {
+  const isAuthorized = user !== null;
   const { langRecord } = useContext(LangContext);
   return (
     <>
       <section className={s.welcomeContainer} data-testid="mainpage-section">
         <div className={s.wrapper}>
           <div className={classNames(s.display1, s.textWhite, s.welcomeBlock)}>
-            {isAuthorized ? `${langRecord.mainPage.welcome_back}, [UserName]!` : `${langRecord.mainPage.welcome}!`}
+            {isAuthorized ? `${langRecord.mainPage.welcome_back}, ${user.email} !` : `${langRecord.mainPage.welcome}!`}
           </div>
           <div className={s.buttonBlock}>
             {isAuthorized ? (
