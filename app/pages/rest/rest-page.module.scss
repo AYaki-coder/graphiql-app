@@ -1,0 +1,97 @@
+@import '../../styles/global.scss';
+@import '../../styles/button.scss';
+
+.actions {
+  display: flex;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+
+  .method {
+    flex: 0 0 auto;
+  }
+
+  .url {
+    flex: 1 0 auto;
+  }
+}
+
+.displayNone {
+  display: none !important;
+}
+
+.bodyRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.5s ease-in-out;
+
+  &.hidden {
+    grid-template-rows: 0fr;
+  }
+}
+
+.bodySection {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto;
+  gap: 6px;
+
+  @media #{$media-mobile} {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+
+  .bodyEditor {
+    min-height: 300px;
+  }
+
+  .bodyControls {
+    @media #{$media-mobile} {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.submitButton {
+  width: 100%;
+}
+
+.resultContainer {
+  display: block;
+  width: inherit;
+  overflow: auto;
+
+  @media #{$media-mobile} {
+    max-width: calc(100vw - 30px);
+  }
+
+  @media #{$media-desktop-large} {
+    max-width: calc(100vw - 30rem);
+  }
+  @media #{$media-desktop} {
+    max-width: calc(100vw - 16rem);
+  }
+  @media #{$media-tablets} {
+    max-width: calc(100vw - 4rem);
+  }
+
+  @media #{$media-mobile} {
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+.errorMessage {
+  color: red;
+  font-size: 14px;
+}
+
+@media #{$media-mobile} {
+  .wrapper {
+    padding: 0 6px;
+  }
+}

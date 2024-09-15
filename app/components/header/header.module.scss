@@ -1,0 +1,75 @@
+@import './../../styles/color.scss';
+@import './../../styles/button.scss';
+@import './../../styles/global.scss';
+
+.header {
+  background-color: $primary;
+  padding: 1rem 0;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  transition: 0.4s;
+  z-index: 5;
+
+  & .logoText {
+    @media #{$media-mobile} {
+      display: none;
+    }
+  }
+}
+
+.isSticky {
+  background-color: $dark;
+  color: $primary;
+  width: 100%;
+}
+
+.headerContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  color: $white;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.selected {
+  box-shadow: 0 0 6px 3px white;
+}
+
+.langContainer {
+  display: flex;
+  gap: 8px;
+  padding: 8px 4px;
+
+  @media #{$media-mobile} {
+    margin-right: 0.8rem;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  & p {
+    margin-bottom: 0;
+  }
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.actionContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

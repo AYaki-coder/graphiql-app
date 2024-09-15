@@ -1,0 +1,99 @@
+{
+  "mainPage": {
+    "welcome": "Welcome",
+    "welcome_back": "Welcome back",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "sign_out": "Sign Out",
+    "history": "History",
+    "rest_client": "REST Client",
+    "graph_client": "GraphiQL Client",
+    "project": "Project",
+    "project_text1": "This project is a lightweight API client combining features of both Postman and GraphQL. It allows users to make REST and GraphQL requests, manage request history, and supports authentication and authorization using Firebase. The app is developed using React and Remix and is designed to offer an intuitive interface for testing APIs.",
+    "project_text2": "This is a final assignment for the React 2024 Q3 course at RSSchool. The assignment is designed for a team of 3 people.",
+    "project_feature1_title": "REST Client",
+    "project_feature1_text": "Supports making RESTful API requests with method selection, URL input, and headers.",
+    "project_feature2_title": "GraphQL Playground",
+    "project_feature2_text": "Provides an interface for building and executing GraphQL queries.",
+    "project_feature3_title": "Authorization and Authentication",
+    "project_feature3_text": "User authentication is managed via Firebase, ensuring access is restricted to authorized users.",
+    "project_feature4_title": "Request History",
+    "project_feature4_text": "Keeps track of previously executed requests and allows users to revisit them.",
+    "course": "Course",
+    "course_text1": "RS School is a free program based on the online educational program community, which has been held by The Rolling Scopes community since 2013.",
+    "course_text2": "RS School students who have completed RS School #2, as well as new students with good skills in the CoreJS/TS/Frontend stages, can move on to the React Course.",
+    "course_text3": "The course covers basic topics for understanding the technology, as well as additional topics on server side rendering. Each topic is allocated approximately one week, during which a related practical task is completed. The tasks provide not only for the use of React, but also other technologies from the IT world, which allows you to expand your knowledge of programming in general.",
+    "course_text4": "The React course is also good because you are not left alone with your question, you can always ask it in the community of students and trainers. The course also provides mentoring and checking of the practical task.",
+
+    "developers": "Developers",
+    "developer1_name": "Vitaliy Shelepkov",
+    "developer1_text": "Top secret. Personal file of AV-Shell. Characteristics of a RS-school participant since 2020, RS-School student, activist, mentor: True Belarusian. Character - Slavic, restrained. Open and friendly with friends and work colleagues. Ruthless on crosschecks. Excellent family man. He had no connections that could discredit him. In his work, he proved himself to be an outstanding company man.",
+    "developer2_name": "Alena Yakimovich",
+    "developer2_text": "Came to the RS-School  in 2020, takes different courses from time to time. Was a student in almost all courses and a mentor in courses about front end. Before school, was not connected with programming in any way. Loves to paint buttons and back end, can't choose one thing.",
+    "developer3_name": "Vyacheslav Nevzorov",
+    "developer3_text": "My name is Vyacheslav Nevzorov, I am 20 years old. I live in Gomel, I study at Francisk Skorina Gomel State University. I dont like Frontend, I have never loved it, and I dont aspire to become one, I was brought here by circumstances. I am more empathetic to backend development, so I am actively learning the .NET platform.",
+    "more_info": "More Info"
+  },
+  "page404": {
+    "heading": "SORRY!",
+    "text": "The page you’re looking for was not found."
+  },
+
+  "history": {
+    "title": "History Page",
+    "no_records1": "You haven't executed any requests",
+    "no_records2": "It's empty here. Try:"
+  },
+
+  "sign_in_up": {
+    "sign_in": "Sign In Page",
+    "sign_up": "Sign Up Page",
+    "sign_in_greeting": "Hello! let's get started",
+    "sign_in_greeting_secondary": "Sign in to continue.",
+    "email": "Email",
+    "email_placeholder": "Enter your email",
+    "password": "Password",
+    "password_placeholder": "Enter your password",
+    "login": "Login",
+    "to_registration": "Go to Registration",
+    "sign_up_greeting": "New here?",
+    "sign_up_greeting_secondary": "Signing up is easy. It only takes a few steps",
+    "register": "Register",
+    "to_login": "Go to Login"
+  },
+  "headersSelector": {
+    "titleText": "Headers",
+    "headerNameInputPlaceholder": "header name",
+    "headerValueInputPlaceholder": "header value"
+  },
+  "restVariablesSelector": {
+    "titleText": "Variables",
+    "variableNameInputPlaceholder": "variable name",
+    "variableValueInputPlaceholder": "variable value"
+  },
+  "restPage": {
+    "title": "REST Client",
+    "bodyEditorPlaceholder": "enter request body",
+    "requestButton": "Send request",
+    "prettifyButton": "Prettify",
+    "bodyFormatError": "Body format error:"
+  },
+  "restPage_example": {
+    "submitButton_example": "Submit",
+    "resetButton_example": "Reset",
+    "setButton_example": "Set"
+  },
+  "graphqlPage": {
+    "titleText": "GraphQL Client",
+    "endpointUrlLabel": "Endpoint URL",
+    "sdlUrlLabel": "SDL URL",
+    "queryLabel": "Query",
+    "variablesLabel": "Variables",
+    "headersLabel": "Headers",
+    "documentationLabel": "Documentation",
+    "sendQueryButton": "Send",
+    "prettierButton": "Prettier",
+    "responseLabel": "Response",
+    "statusLabel": "Status"
+  }
+}
