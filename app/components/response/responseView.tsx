@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { JSONTree } from 'react-json-tree';
 import { ResponseViewProps, ResponseViewType } from '~/models/response';
+import { LangContext } from '../lang-context/lang-context';
 
 const theme = {
   scheme: 'default',
@@ -24,11 +26,14 @@ const theme = {
 
 export default function ResponseView(props: ResponseViewProps) {
   const { status, type, data } = props;
+  const { langRecord } = useContext(LangContext);
 
   return (
     <div>
-      <h2>Response</h2>
-      <p>Status: {status}</p>
+      <h2>{langRecord.graphqlPage?.responseLabel ?? ''}</h2>
+      <p>
+        {langRecord.graphqlPage?.statusLabel ?? ''}: {status}
+      </p>
       {type === ResponseViewType.JSON ? (
         <pre>
           <code>

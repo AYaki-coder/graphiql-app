@@ -52,5 +52,18 @@
     "submitButton_example": "Submit",
     "resetButton_example": "Reset",
     "setButton_example": "Set"
+  },
+  "graphqlPage": {
+    "titleText": "GraphQL Client",
+    "endpointUrlLabel": "Endpoint URL",
+    "sdlUrlLabel": "SDL URL",
+    "queryLabel": "Query",
+    "variablesLabel": "Variables",
+    "headersLabel": "Headers",
+    "documentationLabel": "Documentation",
+    "sendQueryButton": "Send",
+    "prettierButton": "Prettier",
+    "responseLabel": "Response",
+    "statusLabel": "Status"
   }
 }
