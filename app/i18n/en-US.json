@@ -44,7 +44,11 @@
     "password": "Password",
     "password_placeholder": "Enter your password",
     "login": "Login",
-    "to_registration": "Go to Registration"
+    "to_registration": "Go to Registration",
+    "sign_up_greeting": "New here?",
+    "sign_up_greeting_secondary": "Signing up is easy. It only takes a few steps",
+    "register": "Register",
+    "to_login": "Go to Login"
   },
   "headersSelector": {
     "titleText": "Headers",

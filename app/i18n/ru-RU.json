@@ -45,7 +45,11 @@
     "password": "Пароль",
     "password_placeholder": "Введите пароль",
     "login": "Войти",
-    "to_registration": "На регистрацию"
+    "to_registration": "На регистрацию",
+    "sign_up_greeting": "Впервые здесь?",
+    "sign_up_greeting_secondary": "Регистрация  - это просто. Это займет всего несколько шагов",
+    "register": "Зарегистрироваться",
+    "to_login": "На логин"
   },
   "headersSelector": {
     "titleText": "Заголовки",

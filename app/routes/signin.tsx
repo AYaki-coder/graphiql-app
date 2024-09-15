@@ -115,7 +115,7 @@ export default function Login() {
                 {langRecord.sign_in_up.login}
               </button>
 
-              <Link to="/signup" className={classNames(s.btnLight, s.btn, s.btnLg)}>
+              <Link to="/signup" className={classNames(s.btnOutlinePrimary, s.btn, s.btnLg)}>
                 {langRecord.sign_in_up.to_registration}
               </Link>
             </div>

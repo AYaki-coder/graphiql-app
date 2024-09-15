@@ -7,9 +7,10 @@ import s from '../styles/signin-signout.module.scss';
 import classNames from 'classnames';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ISignValues } from '~/models/sing';
-import { signSchema } from '~/utils/schema';
-import { useRef } from 'react';
+import { signSchema, signSchemaRu } from '~/utils/schema';
+import { useContext, useRef } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { LangContext, LANGS } from '~/components/lang-context/lang-context';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const sessionUser = await getUserSession(request);
@@ -34,12 +35,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 export default function SignUp() {
+  const { langRecord, langType } = useContext(LangContext);
+  const schema = langType === LANGS.en ? signSchema : signSchemaRu;
   const formRef = useRef<HTMLFormElement>(null);
   const submit = useSubmit();
   const navigation = useNavigation();
   const { register, handleSubmit, formState } = useForm({
     mode: 'all',
-    resolver: yupResolver(signSchema),
+    resolver: yupResolver(schema),
     defaultValues: {},
   });
   let errorMessage = '';
@@ -59,56 +62,65 @@ export default function SignUp() {
   };
 
   return (
-    <div className="signup">
-      <h1>Sign Up Page</h1>
+    <div className={s.wrapper}>
+      <div className={classNames(s.page)}>
+        <h1>{langRecord.sign_in_up.sign_up}</h1>
 
-      <Form
-        method="post"
-        ref={formRef}
-        className={s.form}
-        //https://github.com/facebook/react/issues/30745
-        // eslint-disable-next-line react-compiler/react-compiler
-        onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">
-          Email: <span className={s.errorMessage}>{formState.errors.email?.message}</span>
-        </label>
-        <input
-          className={classNames(s.emailInput, s.formControl)}
-          type="text"
-          id="email"
-          {...register('email')}
-          placeholder="Enter your email"
-        />
-        <label htmlFor="password">
-          Password: <span className={s.errorMessage}>{formState.errors.password?.message}</span>
-        </label>
-        <input
-          className={classNames(s.emailInput, s.formControl)}
-          type="password"
-          id="password"
-          {...register('password')}
-          placeholder="Enter your password"
-        />
-        <div
-          className={classNames(s.backendErrorMessage, {
-            [s.hidden]: !errorMessage || navigation.state === 'submitting',
-          })}>
-          <span className={s.errorMessage}>{errorMessage}</span>
+        <div className={classNames(s.card, s.width, s.alignSelfCenter)}>
+          <div className={classNames(s.header)}>
+            <h4>{langRecord.sign_in_up.sign_up_greeting}</h4>
+            <p className={s.textSecondary}>{langRecord.sign_in_up.sign_up_greeting_secondary}</p>
+          </div>
+          <Form
+            method="post"
+            ref={formRef}
+            className={s.form}
+            //https://github.com/facebook/react/issues/30745
+            // eslint-disable-next-line react-compiler/react-compiler
+            onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="email">
+              {langRecord.sign_in_up.email}: <span className={s.errorMessage}>{formState.errors.email?.message}</span>
+            </label>
+            <input
+              className={classNames(s.emailInput, s.formControl, s.full)}
+              type="text"
+              id="email"
+              {...register('email')}
+              placeholder={langRecord.sign_in_up.email_placeholder}
+            />
+            <label htmlFor="password">
+              {langRecord.sign_in_up.password}:{' '}
+              <span className={s.errorMessage}>{formState.errors.password?.message}</span>
+            </label>
+            <input
+              className={classNames(s.emailInput, s.formControl, s.full)}
+              type="password"
+              id="password"
+              {...register('password')}
+              placeholder={langRecord.sign_in_up.password_placeholder}
+            />
+            <div
+              className={classNames(s.backendErrorMessage, {
+                [s.hidden]: !errorMessage || navigation.state === 'submitting',
+              })}>
+              <span className={s.errorMessage}>{errorMessage}</span>
+            </div>
+
+            <div className={s.buttonsContainer}>
+              <button
+                type="submit"
+                className={classNames(s.btnPrimary, s.btn, s.btnLg)}
+                disabled={!formState.isValid || navigation.state !== 'idle'}>
+                {langRecord.sign_in_up.register}
+              </button>
+
+              <Link to="/signin" className={classNames(s.btnOutlinePrimary, s.btn, s.btnLg)}>
+                {langRecord.sign_in_up.to_login}
+              </Link>
+            </div>
+          </Form>
         </div>
-
-        <div className={s.buttonsContainer}>
-          <button
-            type="submit"
-            className={classNames(s.btnPrimary, s.btn)}
-            disabled={!formState.isValid || navigation.state !== 'idle'}>
-            Register
-          </button>
-
-          <Link to="/signin" className={classNames(s.btnLight, s.btn)}>
-            Go to Login
-          </Link>
-        </div>
-      </Form>
+      </div>
     </div>
   );
 }
