@@ -73,37 +73,8 @@ section {
   }
 }
 
-.card {
-  background-color: $white;
-  border-radius: $border-radius;
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-
-  gap: 2rem;
-  @media #{$media-tablets} {
-    padding: 1.5rem 1rem;
-  }
-
-  @media #{$media-mobile} {
-    gap: 0;
-    padding: 1.5rem 1rem;
-  }
-}
-
 .cardSpaceBw {
   justify-content: space-between;
-}
-
-.cardHeader {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-end;
-  margin-bottom: 3rem;
-  @media #{$media-mobile} {
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
 }
 
 .cardImage {

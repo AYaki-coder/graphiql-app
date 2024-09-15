@@ -34,6 +34,7 @@ button:not(:disabled),
   &[disabled] {
     color: #979797;
     background-color: #e9ecef;
+    border: 1px solid #e9ecef;
     opacity: 1;
     pointer-events: none;
   }
