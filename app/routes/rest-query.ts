@@ -24,12 +24,7 @@ export async function action({ request }: ActionFunctionArgs): Promise<TypedResp
       }
     }
 
-    let data;
-    if (isResponseJson) {
-      data = await response.json();
-    } else {
-      data = await response.text();
-    }
+    const data = isResponseJson ? await response.json() : await response.text();
 
     return json({
       isError: false,

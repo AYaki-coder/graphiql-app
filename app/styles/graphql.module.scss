@@ -37,3 +37,27 @@
 .formField + .formField {
   margin-top: 1rem;
 }
+
+.responseWrapper {
+  display: block;
+  width: inherit;
+  overflow: auto;
+
+  @media #{$media-mobile} {
+    max-width: calc(100vw - 30px);
+  }
+
+  @media #{$media-desktop-large} {
+    max-width: calc(100vw - 30rem);
+  }
+  @media #{$media-desktop} {
+    max-width: calc(100vw - 16rem);
+  }
+  @media #{$media-tablets} {
+    max-width: calc(100vw - 4rem);
+  }
+
+  @media #{$media-mobile} {
+    max-width: calc(100vw - 2rem);
+  }
+}

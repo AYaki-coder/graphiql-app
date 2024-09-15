@@ -62,6 +62,7 @@
     "variableValueInputPlaceholder": "значение переменной"
   },
   "restPage": {
+    "title": "REST Клиент",
     "bodyEditorPlaceholder": "введите тело запроса",
     "requestButton": "Отправить запрос",
     "prettifyButton": "Форматировать",

@@ -71,12 +71,9 @@ export function bodyObjToBase64(bodyObj: IBodyObj) {
 
 export function isJsonBody(headers: THeaders): boolean {
   const contentTypeHeader = Object.entries(headers).find(
-    ([key, value]: [string, string]) => key.toLowerCase() === 'content-type',
+    ([key]: [string, string]) => key.toLowerCase() === 'content-type',
   );
-  if (contentTypeHeader && contentTypeHeader[1].toLowerCase().includes('application/json')) {
-    return true;
-  }
-  return false;
+  return !!(contentTypeHeader && contentTypeHeader[1].toLowerCase().includes('application/json'));
 }
 
 export function prepareBodyToSend(bodyObj: IBodyObj, isBodyJson: boolean): string {

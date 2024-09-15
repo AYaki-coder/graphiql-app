@@ -162,7 +162,7 @@ export function RestPage({ user }: IRestPageProps) {
   return (
     <div className={s.wrapper}>
       <div className={s.page}>
-        <h2>REST Client</h2>
+        <h1>{langRecord.restPage?.title ?? ''}</h1>
         <div className={classNames(s.row)}>
           <select
             name="method"
