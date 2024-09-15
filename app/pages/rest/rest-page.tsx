@@ -14,8 +14,9 @@ import { ResponseViewType } from '~/models/response';
 import { LangContext } from '~/components/lang-context/lang-context';
 import { useCustomRestNavigate } from '~/hooks/useCustomRestNavigate';
 import { THeaders } from '~/models/headers-selector';
-import { CLIENT_TYPE, historyService } from '~/utils/history-service';
+import { CLIENT_TYPE } from '~/utils/history-service';
 import { IUser } from '~/models/root';
+import { useCreateHistoryRecord } from '~/hooks/useCreateHistoryRecord';
 
 interface IRestPageProps {
   user: IUser;
@@ -27,6 +28,7 @@ export function RestPage({ user }: IRestPageProps) {
   const { langRecord } = useContext(LangContext);
   const params = useParams();
   const customNavigate = useCustomRestNavigate();
+  const setHistoryRecord = useCreateHistoryRecord();
   const fullPath = params['*'] ?? '';
   const paramsArray: string[] = fullPath.split('/');
   const [method, urlBase64, bodyBase64] = paramsArray;
@@ -113,11 +115,7 @@ export function RestPage({ user }: IRestPageProps) {
       ...(isGetMethod ? {} : { body: JSON.parse(bodyObj.body) }),
     };
 
-    historyService.setItem(user.email, {
-      client: CLIENT_TYPE.rest,
-      viewLink: `${method}  ${url}`,
-      fullLink: `/${method}/${urlBase64}${isGetMethod ? '' : '/' + (bodyBase64 ?? '')}`,
-    });
+    setHistoryRecord(CLIENT_TYPE.rest, user.email, method, url, urlBase64, bodyBase64);
 
     const response: Response = await fetch('/rest-query', {
       method: 'POST',
