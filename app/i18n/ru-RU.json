@@ -52,5 +52,18 @@
     "submitButton_example": "Отправить",
     "resetButton_example": "Сбросить",
     "setButton_example": "Установить"
+  },
+  "graphqlPage": {
+    "titleText": "GraphQL Клиент",
+    "endpointUrlLabel": "Адрес",
+    "sdlUrlLabel": "SDL Адрес",
+    "queryLabel": "Запрос",
+    "variablesLabel": "Переменные",
+    "headersLabel": "Заголовки",
+    "documentationLabel": "Документация",
+    "sendQueryButton": "Отправить",
+    "prettierButton": "Форматировать",
+    "responseLabel": "Ответ",
+    "statusLabel": "Статус"
   }
 }

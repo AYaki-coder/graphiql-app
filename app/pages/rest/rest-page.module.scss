@@ -1,15 +1,6 @@
 @import '../../styles/global.scss';
 @import '../../styles/button.scss';
 
-.page {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  gap: 16px;
-  padding: 2rem 0;
-}
-
 .actions {
   display: flex;
   gap: 20px;

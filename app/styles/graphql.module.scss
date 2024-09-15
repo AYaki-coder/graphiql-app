@@ -1,0 +1,39 @@
+@import './button.scss';
+@import './color.scss';
+@import './global.scss';
+@import './typography.scss';
+
+.row {
+  display: flex;
+  gap: 20px;
+
+  .method {
+    flex: 0 0 auto;
+  }
+
+  .url {
+    flex: 1 0 auto;
+  }
+}
+
+.textArea {
+  gap: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.textAreaWithButton {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formField + .formField {
+  margin-top: 1rem;
+}
