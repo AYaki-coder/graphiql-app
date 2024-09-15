@@ -6,9 +6,9 @@
   background-color: $primary;
   padding: 1rem 0;
   width: 100%;
-  position: sticky; /* Fixed position - sit on top of the page */
+  position: sticky;
   top: 0;
-  transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
+  transition: 0.4s;
 
   & .logoText {
     @media #{$media-mobile} {
@@ -27,6 +27,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .link {
@@ -42,14 +43,14 @@
   box-shadow: 0 0 6px 3px white;
 }
 
-.langButton {
-  padding: 5px 4px;
-}
-
 .langContainer {
   display: flex;
   gap: 8px;
   padding: 8px 4px;
+
+  @media #{$media-mobile} {
+    margin-right: 0.8rem;
+  }
 }
 
 .logoContainer {
