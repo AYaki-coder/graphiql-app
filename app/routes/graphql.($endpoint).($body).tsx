@@ -29,8 +29,14 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const { endpoint, body } = params;
 
-  const decodedEndpoint = endpoint ? decode(endpoint) : '';
-  const decodedBody = body ? JSON.parse(decode(body)) : null;
+  let decodedEndpoint = '';
+  let decodedBody = null;
+  try {
+    decodedEndpoint = endpoint ? decode(endpoint) : '';
+    decodedBody = body ? JSON.parse(decode(body)) : null;
+  } catch (error) {
+    //TODO: add modal window
+  }
 
   const url = new URL(request.url);
   const headers = Object.fromEntries(url.searchParams.entries());
