@@ -97,7 +97,7 @@ class HistoryService {
             this.storage = {};
             localStorage.setItem(this.localStorageKey, JSON.stringify(this.storage));
           } catch (error) {
-            //
+            //TODO: add modal window
           }
           return;
         }

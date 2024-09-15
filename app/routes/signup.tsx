@@ -54,7 +54,7 @@ export default function SignUp() {
         submit(formRef.current);
       }
     } catch (error) {
-      //
+      //TODO: add modal window
     }
   };
 
