@@ -20,6 +20,10 @@
     align-items: center;
     gap: 10px;
 
+    @media #{$media-mobile} {
+      flex-wrap: wrap;
+    }
+
     .headerInput {
       flex: 1 1 100%;
     }

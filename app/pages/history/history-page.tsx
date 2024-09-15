@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import { LangContext } from '~/components/lang-context/lang-context';
 import { IUser } from '~/models/root';
-import { historyService, IHistoryItem } from '~/utils/history-service';
+import { CLIENT_TYPE, historyService, IHistoryItem } from '~/utils/history-service';
 
 interface IHistoryPageProps {
   user: IUser;
@@ -21,16 +21,26 @@ export function HistoryPage({ user }: IHistoryPageProps) {
   return (
     <>
       <div className={s.wrapper} data-testid="history-page">
-        <section>
-          <h2>History Page</h2>
-          {historyRecords.map((record, index) => {
-            return (
-              <Link key={index} className={classNames(s.btn, s.btnLg, s.btnPrimary, s.record)} to={record.fullLink}>
-                <span>{record.client}</span> <span>{record.viewLink}</span>
-              </Link>
-            );
-          })}
-        </section>
+        <div className={s.page}>
+          <h1>{langRecord.history.title}</h1>
+          <div className={classNames(s.card, s.gap)}>
+            {historyRecords.map((record, index) => {
+              return (
+                <Link key={index} className={classNames(s.record)} to={record.fullLink}>
+                  <span
+                    className={classNames(
+                      s.pill,
+                      { [s.pillInfo]: record.client === CLIENT_TYPE.graph },
+                      { [s.pillSuccess]: record.client === CLIENT_TYPE.rest },
+                    )}>
+                    {record.client}
+                  </span>
+                  <p className={classNames()}>{record.viewLink}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

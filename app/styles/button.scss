@@ -122,6 +122,18 @@ button:not(:disabled),
   }
 }
 
+.btnDark {
+  color: $white;
+  background-color: $dark;
+  border-color: $dark;
+
+  &:hover,
+  :focus-visible {
+    background-color: $success-bg-hover;
+    border-color: $success-border-hover;
+  }
+}
+
 .btnOutlinePrimary {
   color: $primary;
   border-color: $primary;

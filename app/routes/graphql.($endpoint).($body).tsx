@@ -257,7 +257,9 @@ export default function GraphQL() {
           </button>
         </Form>
 
-        <ResponseView data={response.data} status={response.status} type={ResponseViewType.JSON} />
+        <div className={classNames(s.responseWrapper)}>
+          <ResponseView data={response.data} status={response.status} type={ResponseViewType.JSON} />
+        </div>
 
         {fetcher && (
           <div className={classNames(s.cardView)}>

@@ -5,6 +5,7 @@ import { REST_VERBS } from '~/consts/restful.consts';
 import { getUserSession } from '~/firebase/session';
 import { IUser } from '~/models/root';
 import { RestPage } from '~/pages/rest/rest-page';
+import { isMethodWithoutBodyFunc } from '~/utils/rest-helpers';
 
 function isRestRoutes(params: Params<string>) {
   const fullPath = params['*'] ?? '';
@@ -12,12 +13,10 @@ function isRestRoutes(params: Params<string>) {
 
   const paramsArray: string[] = fullPath.split('/');
   const [method, base64Url, base64body] = paramsArray;
+  const isMethodWithoutBody = isMethodWithoutBodyFunc(method);
   if (!REST_VERBS.some(verb => method.toUpperCase() === verb)) {
     return false;
-  } else if (
-    (paramsArray.length === 2 && paramsArray[0].toLowerCase() === 'get') ||
-    (paramsArray.length === 3 && paramsArray[0].toLowerCase() !== 'get')
-  ) {
+  } else if ((paramsArray.length === 2 && isMethodWithoutBody) || (paramsArray.length === 3 && !isMethodWithoutBody)) {
     return true;
   }
 
