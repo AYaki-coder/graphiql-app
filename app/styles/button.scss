@@ -30,6 +30,13 @@ button:not(:disabled),
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
+
+  &[disabled] {
+    color: #979797;
+    background-color: #e9ecef;
+    opacity: 1;
+    pointer-events: none;
+  }
 }
 
 .btnLg {

@@ -19,6 +19,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@remix-run/node": "^2.11.2",
     "@remix-run/react": "^2.11.2",
     "@remix-run/serve": "^2.11.2",
@@ -33,9 +34,11 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-firebase-hooks": "^5.1.1",
+    "react-hook-form": "^7.53.0",
     "react-json-tree": "^0.19.0",
     "react-redux": "^9.1.2",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.11.2",
