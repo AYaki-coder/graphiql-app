@@ -5,7 +5,7 @@ import { LangContext } from '~/components/lang-context/lang-context';
 export default function NotFoundPage() {
   const { langRecord } = useContext(LangContext);
   return (
-    <div className={s.page404}>
+    <div className={s.page404} data-testid="page-404">
       <div className={s.h404}>404</div>
       <div>
         <h1 className={(s.display1, s.textWhite)}>{langRecord.page404.heading}</h1>

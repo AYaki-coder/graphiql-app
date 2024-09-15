@@ -14,6 +14,20 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       ignoreEmptyLines: false,
+      exclude: [
+        'node_modules',
+        'app/firebase',
+        '.eslintrc.cjs',
+        'vite.config.ts',
+        'app/root.tsx',
+        'app/routes/$.tsx',
+        'app/utils/history-service.ts',
+        'app/components/lang-context/lang-context.tsx',
+        'app/models',
+        'app/routes/*.ts',
+        'app/routes/history.tsx',
+        'app/routes/_index.tsx',
+      ],
     },
   },
 });

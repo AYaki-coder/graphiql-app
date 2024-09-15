@@ -61,7 +61,7 @@ export function HeadersSelector(props: IHeadersSelectorProps) {
   }, []);
 
   return (
-    <div className={classNames(s.headersContainer, props.className)}>
+    <div className={classNames(s.headersContainer, props.className)} data-testid="headers-selector">
       {props.showTitle && (
         <h4 className={classNames(s.headersTitle, props.titleClassName)}>
           {langRecord.headersSelector?.titleText ?? ''}:

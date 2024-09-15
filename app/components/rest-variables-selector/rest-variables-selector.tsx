@@ -37,7 +37,7 @@ export function RestVariablesSelector(props: IRestVariablesSelectorProps) {
   );
 
   return (
-    <div className={classNames(s.variablesContainer, props.className)}>
+    <div className={classNames(s.variablesContainer, props.className)} data-testid="rest-variables-selector">
       {props.showTitle && <h4 className={s.variablesTitle}>{langRecord.restVariablesSelector?.titleText ?? ''}:</h4>}
 
       <section className={s.fieldset}>

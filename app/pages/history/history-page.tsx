@@ -20,7 +20,7 @@ export function HistoryPage({ user }: IHistoryPageProps) {
 
   return (
     <>
-      <div className={s.wrapper}>
+      <div className={s.wrapper} data-testid="history-page">
         <div className={s.page}>
           <h1>{langRecord.history.title}</h1>
           {historyRecords.length ? (

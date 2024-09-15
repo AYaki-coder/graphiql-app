@@ -160,7 +160,7 @@ export function RestPage({ user }: IRestPageProps) {
   }, [setResult, method, url, headers, isMethodWithoutBody, bodyObj]);
 
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} data-testid="rest-page">
       <div className={s.page}>
         <h1>{langRecord.restPage?.title ?? ''}</h1>
         <div className={classNames(s.row)}>

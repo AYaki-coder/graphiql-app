@@ -13,7 +13,10 @@ export default function LanguageSelect() {
   };
 
   return (
-    <div className={classNames(s.langSelect, { [s.isActive]: isActive })} onClick={() => setIsActive(a => !a)}>
+    <div
+      className={classNames(s.langSelect, { [s.isActive]: isActive })}
+      onClick={() => setIsActive(a => !a)}
+      data-testid="lang-select">
       <img className={s.image} src={langContext.langType === LANGS.en ? '/flag-en.svg' : '/flag-ru.svg'} alt="flag" />
       <span className={s.currentLang}>{langContext.langType === LANGS.en ? LANGS.en : LANGS.ru}</span>
 

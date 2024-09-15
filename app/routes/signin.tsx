@@ -63,7 +63,7 @@ export default function Login() {
   };
 
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} data-testid="sing-in">
       <div className={classNames(s.page)}>
         <h2>{langRecord.sign_in_up.sign_in}</h2>
 
