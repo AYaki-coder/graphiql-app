@@ -34,6 +34,15 @@
     "developer3_text": "My name is Vyacheslav Nevzorov, I am 20 years old. I live in Gomel, I study at Francisk Skorina Gomel State University. I dont like Frontend, I have never loved it, and I dont aspire to become one, I was brought here by circumstances. I am more empathetic to backend development, so I am actively learning the .NET platform.",
     "more_info": "More Info"
   },
+  "page404": {
+    "heading": "SORRY!",
+    "text": "The page you’re looking for was not found."
+  },
+
+  "history": {
+    "title": "History Page"
+  },
+
   "sign_in_up": {
     "sign_in": "Sign In Page",
     "sign_up": "Sign Up Page",
