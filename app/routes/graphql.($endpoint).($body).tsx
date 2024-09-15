@@ -58,7 +58,6 @@ export async function action({ request }: ActionFunctionArgs) {
     try {
       requestBody = { query, variables: JSON.parse(variables) };
     } catch (error) {
-      console.error('Invalid JSON in variables:', error);
       return json({ status: 400, data: { error: 'Invalid JSON in variables' } });
     }
   } else {
@@ -83,7 +82,6 @@ export async function action({ request }: ActionFunctionArgs) {
     response = await fetch(endpointUrl, fetchOptions);
     data = await response.json();
   } catch (error) {
-    console.error('Error:', error);
     return json({ status: 400, data: { error: 'Failed to fetch data' } });
   }
 
@@ -156,7 +154,7 @@ export default function GraphQL() {
         url: sdlUrl || `${endpointUrl}?sdl`,
       });
     } catch (error) {
-      console.error('Error creating fetcher:', error);
+      //TODO: add modal window
     }
   }
 
