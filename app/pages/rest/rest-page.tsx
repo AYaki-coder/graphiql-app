@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from '@remix-run/react';
 import classNames from 'classnames';
 import { IApiResponse } from '~/models/rest';
@@ -8,7 +8,17 @@ import _ from 'lodash';
 import { HeadersSelector } from '~/components/headers-selector/headers-selector';
 import { RestVariablesSelector } from '~/components/rest-variables-selector/rest-variables-selector';
 import { TRestVariables } from '~/models/rest-variables-selector';
-import { bodyObjToBase64, bodyParser, IBodyObj, stringToBase64, urlParser } from '~/utils/rest-helpers';
+import {
+  bodyObjToBase64,
+  bodyParser,
+  IBodyObj,
+  isJsonBody,
+  isMethodWithoutBodyFunc,
+  prepareBodyToSend,
+  prettifyBody,
+  stringToBase64,
+  urlParser,
+} from '~/utils/rest-helpers';
 import ResponseView from '~/components/response/responseView';
 import { ResponseViewType } from '~/models/response';
 import { LangContext } from '~/components/lang-context/lang-context';
@@ -23,6 +33,7 @@ interface IRestPageProps {
 }
 
 export function RestPage({ user }: IRestPageProps) {
+  const bodyRef = useRef<HTMLTextAreaElement>(null);
   const [result, setResult] = useState<IApiResponse | null>();
   const [headers, setHeaders] = useState<THeaders>({});
   const { langRecord } = useContext(LangContext);
@@ -32,9 +43,11 @@ export function RestPage({ user }: IRestPageProps) {
   const fullPath = params['*'] ?? '';
   const paramsArray: string[] = fullPath.split('/');
   const [method, urlBase64, bodyBase64] = paramsArray;
-  const isGetMethod = method.toUpperCase() === REST_VERBS[0];
+  const isMethodWithoutBody = isMethodWithoutBodyFunc(method);
+  const isBodyJson = isJsonBody(headers);
   const { url, urlParseError } = urlParser(urlBase64);
-  const { bodyObj, bodyParseError } = bodyParser(bodyBase64, isGetMethod);
+  const { bodyObj, bodyParseError } = bodyParser(bodyBase64, isMethodWithoutBody);
+  const [bodyFormatError, setBodyFormatError] = useState('');
 
   useEffect(() => {
     const sendUrl = urlParseError === null ? urlBase64 : stringToBase64(url);
@@ -48,12 +61,12 @@ export function RestPage({ user }: IRestPageProps) {
   const onMethodChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       const newMethod = event.target.value;
-      const sendBody = method !== REST_VERBS[0] ? bodyBase64 : bodyObjToBase64(bodyObj);
+      const sendBody = !isMethodWithoutBody ? bodyBase64 : bodyObjToBase64(bodyObj);
 
       return customNavigate(newMethod, urlBase64, sendBody, { preventScrollReset: true });
     },
 
-    [customNavigate, method, urlBase64, bodyBase64, bodyObj],
+    [customNavigate, isMethodWithoutBody, urlBase64, bodyBase64, bodyObj],
   );
 
   const onUrlChange = useCallback(
@@ -91,10 +104,47 @@ export function RestPage({ user }: IRestPageProps) {
     [customNavigate, method, urlBase64, bodyObj],
   );
 
+  const prettifyClick = () => {
+    const { newBody, errorMessage } = prettifyBody(bodyObj);
+    if (errorMessage) {
+      return setBodyFormatError(errorMessage);
+    }
+    setBodyFormatError('');
+    if (bodyRef.current) {
+      bodyRef.current.value = newBody;
+    }
+
+    const newBodyObject: IBodyObj = {
+      body: newBody,
+      variables: bodyObj.variables,
+    };
+    const newBodyBase64 = bodyObjToBase64(newBodyObject);
+    return customNavigate(method, urlBase64, newBodyBase64, { preventScrollReset: true });
+  };
+
   const onSendClick = useCallback(async () => {
-    let trBody = {};
     try {
-      trBody = isGetMethod ? {} : { body: JSON.parse(bodyObj.body) };
+      const trBody = isMethodWithoutBody ? {} : { body: prepareBodyToSend(bodyObj, isBodyJson) };
+
+      const query = {
+        url,
+        method,
+        headers,
+        ...trBody,
+      };
+
+      setHistoryRecord(CLIENT_TYPE.rest, user.email, method, url, urlBase64, bodyBase64);
+
+      const response: Response = await fetch('/rest-query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ req: query }),
+      });
+
+      const data: IApiResponse = await response.json();
+      setResult(data);
     } catch (error) {
       const message = _.get(error, 'message', 'Something went wrong in json body');
 
@@ -107,32 +157,12 @@ export function RestPage({ user }: IRestPageProps) {
       });
       return;
     }
-
-    const query = {
-      url,
-      method,
-      headers,
-      ...(isGetMethod ? {} : { body: JSON.parse(bodyObj.body) }),
-    };
-
-    setHistoryRecord(CLIENT_TYPE.rest, user.email, method, url, urlBase64, bodyBase64);
-
-    const response: Response = await fetch('/rest-query', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ req: query }),
-    });
-
-    const data: IApiResponse = await response.json();
-    setResult(data);
-  }, [setResult, method, url, headers, isGetMethod, bodyObj]);
+  }, [setResult, method, url, headers, isMethodWithoutBody, bodyObj]);
 
   return (
     <div className={s.wrapper}>
       <div className={s.page}>
-        <h1>REST Client</h1>
+        <h1>{langRecord.restPage?.title ?? ''}</h1>
         <div className={classNames(s.row)}>
           <select
             name="method"
@@ -163,17 +193,17 @@ export function RestPage({ user }: IRestPageProps) {
             onHeadersChange={h => setHeaders(h)}
           />
         </div>
-        <div className={classNames(s.contentWrapper, s.bodyRow, { [s.hidden]: isGetMethod })}>
+        <div className={classNames(s.contentWrapper, s.bodyRow, { [s.hidden]: isMethodWithoutBody })}>
           <div className={s.bodySection}>
             <RestVariablesSelector
               className={s.cardView}
               showTitle={true}
-              disabled={isGetMethod}
+              disabled={isMethodWithoutBody}
               onVariablesChange={onVariablesChange}
               variables={bodyObj.variables}
             />
 
-            {isGetMethod ? (
+            {isMethodWithoutBody ? (
               <textarea
                 className={classNames(s.formControl, s.bodyEditor)}
                 name="bodyEditor"
@@ -181,7 +211,7 @@ export function RestPage({ user }: IRestPageProps) {
                 id=""
                 onBlur={onBodyChange}
                 value={bodyObj.body}
-                disabled={isGetMethod}></textarea>
+                disabled={isMethodWithoutBody}></textarea>
             ) : (
               <textarea
                 className={classNames(s.formControl, s.bodyEditor)}
@@ -189,14 +219,28 @@ export function RestPage({ user }: IRestPageProps) {
                 placeholder={langRecord.restPage?.bodyEditorPlaceholder ?? ''}
                 id=""
                 onBlur={onBodyChange}
+                ref={bodyRef}
                 defaultValue={bodyObj.body}
-                disabled={isGetMethod}></textarea>
+                disabled={isMethodWithoutBody}></textarea>
             )}
           </div>
         </div>
-        <div className={classNames(s.row, s.contentWrapper)}>
+        {bodyFormatError && (
+          <div className={classNames(s.row, s.contentWrapper)}>
+            <span className={classNames(s.errorMessage)}>
+              {langRecord.restPage?.bodyFormatError ?? ''} {bodyFormatError}
+            </span>
+          </div>
+        )}
+        <div className={classNames(s.row, s.contentWrapper, s.bodyControls)}>
           <button className={classNames(s.submitButton, s.btn, s.btnPrimary)} onClick={onSendClick}>
             {langRecord.restPage?.requestButton ?? ''}
+          </button>
+          <button
+            className={classNames(s.prettifyButton, s.btn, s.btnPrimary)}
+            onClick={prettifyClick}
+            disabled={!isBodyJson}>
+            {langRecord.restPage?.prettifyButton ?? ''}
           </button>
         </div>
         <div className={classNames(s.contentWrapper)}>

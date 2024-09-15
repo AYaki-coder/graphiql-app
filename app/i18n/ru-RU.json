@@ -70,8 +70,11 @@
     "variableValueInputPlaceholder": "значение переменной"
   },
   "restPage": {
+    "title": "REST Клиент",
     "bodyEditorPlaceholder": "введите тело запроса",
-    "requestButton": "Отправить запрос"
+    "requestButton": "Отправить запрос",
+    "prettifyButton": "Форматировать",
+    "bodyFormatError": "Ошибка форматирования:"
   },
   "restPage_example": {
     "submitButton_example": "Отправить",
