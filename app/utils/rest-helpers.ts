@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import { TRestVariables } from '~/models/rest-variables-selector';
-import { encode as strToBase64, decode as Base64ToStr, encodeURI } from 'js-base64';
+import { encode as strToBase64, decode as Base64ToStr } from 'js-base64';
+import { REST_VERBS_WITHOUT_BODY } from '~/consts/restful.consts';
+import { THeaders } from '~/models/headers-selector';
 
 export interface IUrlParserData {
   url: string;
@@ -31,6 +33,12 @@ export interface IBodyParserData {
   bodyParseError: string | null;
 }
 
+export function isMethodWithoutBodyFunc(method: string) {
+  const upperCasedMethod = method.toUpperCase();
+
+  return REST_VERBS_WITHOUT_BODY.some(verb => upperCasedMethod === verb);
+}
+
 export function bodyParser(bodyBase64: string, skipEncode: boolean): IBodyParserData {
   let bodyObj: IBodyObj = { body: '', variables: {} };
   let error: string | null = null;
@@ -59,4 +67,39 @@ export function stringToBase64(s: string) {
 
 export function bodyObjToBase64(bodyObj: IBodyObj) {
   return strToBase64(JSON.stringify(bodyObj));
+}
+
+export function isJsonBody(headers: THeaders): boolean {
+  const contentTypeHeader = Object.entries(headers).find(
+    ([key, value]: [string, string]) => key.toLowerCase() === 'content-type',
+  );
+  if (contentTypeHeader && contentTypeHeader[1].toLowerCase().includes('application/json')) {
+    return true;
+  }
+  return false;
+}
+
+export function prepareBodyToSend(bodyObj: IBodyObj, isBodyJson: boolean): string {
+  let bodyText: string = bodyObj.body;
+
+  Object.entries(bodyObj.variables).forEach(([key, value]: [string, string]) => {
+    bodyText = bodyText.replaceAll(`{{${key}}}`, value);
+  });
+
+  if (isBodyJson) {
+    return JSON.parse(bodyText);
+  }
+  return bodyText;
+}
+
+export function prettifyBody(bodyObj: IBodyObj) {
+  let message = '';
+  let body = '';
+  try {
+    body = JSON.stringify(JSON.parse(bodyObj.body), null, 2);
+  } catch (error) {
+    message = _.get(error, 'message', 'Something went wrong in json body');
+  }
+
+  return { newBody: body, errorMessage: message };
 }

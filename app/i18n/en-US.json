@@ -46,7 +46,9 @@
   },
   "restPage": {
     "bodyEditorPlaceholder": "enter request body",
-    "requestButton": "Send request"
+    "requestButton": "Send request",
+    "prettifyButton": "Prettify",
+    "bodyFormatError": "Body format error:"
   },
   "restPage_example": {
     "submitButton_example": "Submit",

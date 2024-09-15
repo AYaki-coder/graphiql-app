@@ -16,8 +16,21 @@ export async function action({ request }: ActionFunctionArgs): Promise<TypedResp
       headers,
       ...(body ? { body: JSON.stringify({ body }) } : {}),
     });
+    let isResponseJson = false;
+    for (const [headerKey, headerValue] of response.headers.entries()) {
+      if (headerKey.toLowerCase() === 'content-type' && headerValue.toLowerCase().includes('application/json')) {
+        isResponseJson = true;
+        break;
+      }
+    }
 
-    const data = await response.json();
+    let data;
+    if (isResponseJson) {
+      data = await response.json();
+    } else {
+      data = await response.text();
+    }
+
     return json({
       isError: false,
       errorText: '',
