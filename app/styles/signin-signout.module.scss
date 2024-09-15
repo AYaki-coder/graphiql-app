@@ -1,5 +1,14 @@
 @import './global.scss';
 @import './button.scss';
+@import './typography.scss';
+
+.width {
+  max-width: 50rem;
+}
+
+.header {
+  padding: 0 20px;
+}
 
 .form {
   display: flex;
@@ -39,5 +48,6 @@
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: 1rem;
   }
 }

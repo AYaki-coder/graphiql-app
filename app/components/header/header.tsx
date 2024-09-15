@@ -27,7 +27,7 @@ export default function Header() {
                   'Content-Type': 'application/json',
                 },
               });
-              navigate('/signin', { replace: true });
+              navigate('/', { replace: true });
             } catch (error) {
               //TODO: add modal window
             }
@@ -47,7 +47,7 @@ export default function Header() {
         'Content-Type': 'application/json',
       },
     });
-    navigate('/signin', { replace: true });
+    navigate('/', { replace: true });
   }, [navigate]);
 
   useEffect(() => {
