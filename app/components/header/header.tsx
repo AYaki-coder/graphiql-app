@@ -29,7 +29,7 @@ export default function Header() {
               });
               navigate('/signin', { replace: true });
             } catch (error) {
-              console.log('signOutError', _.get(error, 'message', 'Something went wrong on logout'));
+              //TODO: add modal window
             }
         },
         5 * 60 * 1000,
@@ -50,7 +50,6 @@ export default function Header() {
     navigate('/signin', { replace: true });
   }, [navigate]);
 
-  // on render, set listener
   useEffect(() => {
     window.addEventListener('scroll', changeSticky);
     return () => {
@@ -59,7 +58,6 @@ export default function Header() {
   }, []);
 
   const changeSticky = () => {
-    /* Method that will fix header after a specific scrollable */
     const scrollTop = window.scrollY;
     const stickyClass = scrollTop >= 50 ? true : false;
     setIsSticky(stickyClass);

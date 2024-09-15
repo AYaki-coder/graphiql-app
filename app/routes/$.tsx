@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
 import type { Params, ShouldRevalidateFunction } from '@remix-run/react';
-import { useParams, useNavigate, useLoaderData, redirect } from '@remix-run/react';
+import { useLoaderData, redirect } from '@remix-run/react';
 import { REST_VERBS } from '~/consts/restful.consts';
 import { getUserSession } from '~/firebase/session';
-import RestPage from '~/pages/rest/rest-page';
+import { IUser } from '~/models/root';
+import { RestPage } from '~/pages/rest/rest-page';
 
 function isRestRoutes(params: Params<string>) {
   const fullPath = params['*'] ?? '';
@@ -28,20 +29,27 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextParams }) => {
 };
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
-  const sessionUser = await getUserSession(request);
-  if (!sessionUser) {
-    return redirect('/signin');
-  }
-
-  const redirectUrl = '/';
+  const redirectUrl = '/404';
 
   if (isRestRoutes(params)) {
-    return null;
+    const sessionUser = await getUserSession(request);
+    if (!sessionUser) {
+      return redirect('/signin');
+    }
+
+    const user: IUser = {
+      email: sessionUser.email ?? '',
+      id: sessionUser.user_id ?? '',
+      sessionExpireTime: sessionUser.exp * 1000,
+    };
+
+    return user;
   }
 
   throw redirect(redirectUrl);
 }
 
 export default function Rest() {
-  return <RestPage></RestPage>;
+  const data = useLoaderData<IUser>();
+  return <RestPage user={data} />;
 }

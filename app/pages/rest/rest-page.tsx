@@ -14,8 +14,14 @@ import { ResponseViewType } from '~/models/response';
 import { LangContext } from '~/components/lang-context/lang-context';
 import { useCustomRestNavigate } from '~/hooks/useCustomRestNavigate';
 import { THeaders } from '~/models/headers-selector';
+import { CLIENT_TYPE, historyService } from '~/utils/history-service';
+import { IUser } from '~/models/root';
 
-export default function RestPage() {
+interface IRestPageProps {
+  user: IUser;
+}
+
+export function RestPage({ user }: IRestPageProps) {
   const [result, setResult] = useState<IApiResponse | null>();
   const [headers, setHeaders] = useState<THeaders>({});
   const { langRecord } = useContext(LangContext);
@@ -106,6 +112,12 @@ export default function RestPage() {
       headers,
       ...(isGetMethod ? {} : { body: JSON.parse(bodyObj.body) }),
     };
+
+    historyService.setItem(user.email, {
+      client: CLIENT_TYPE.rest,
+      viewLink: `${method}  ${url}`,
+      fullLink: `/${method}/${urlBase64}${isGetMethod ? '' : '/' + (bodyBase64 ?? '')}`,
+    });
 
     const response: Response = await fetch('/rest-query', {
       method: 'POST',

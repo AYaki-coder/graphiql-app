@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { TRestVariables } from '~/models/rest-variables-selector';
+import { encode as strToBase64, decode as Base64ToStr, encodeURI } from 'js-base64';
 
 export interface IUrlParserData {
   url: string;
@@ -10,7 +11,7 @@ export function urlParser(urlBase64: string): IUrlParserData {
   let url: string = '';
   let error: string | null = null;
   try {
-    url = atob(urlBase64);
+    url = Base64ToStr(urlBase64);
   } catch (e) {
     error = 'Base64 url corrupted, reset to default values';
     if (e instanceof Error) {
@@ -37,7 +38,7 @@ export function bodyParser(bodyBase64: string, skipEncode: boolean): IBodyParser
     return { bodyObj, bodyParseError: error };
   }
   try {
-    bodyObj = JSON.parse(atob(bodyBase64));
+    bodyObj = JSON.parse(Base64ToStr(bodyBase64));
 
     if (!_.isString(bodyObj?.body) || !_.isObject(bodyObj?.variables)) {
       throw new Error('body or variables is not valid');
@@ -53,9 +54,9 @@ export function bodyParser(bodyBase64: string, skipEncode: boolean): IBodyParser
 }
 
 export function stringToBase64(s: string) {
-  return btoa(s);
+  return strToBase64(s);
 }
 
 export function bodyObjToBase64(bodyObj: IBodyObj) {
-  return btoa(JSON.stringify(bodyObj));
+  return strToBase64(JSON.stringify(bodyObj));
 }

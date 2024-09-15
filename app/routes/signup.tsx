@@ -54,7 +54,7 @@ export default function SignUp() {
         submit(formRef.current);
       }
     } catch (error) {
-      console.log(_.get(error, 'message', ''));
+      //TODO: add modal window
     }
   };
 
