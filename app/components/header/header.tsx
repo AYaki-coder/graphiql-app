@@ -64,7 +64,7 @@ export default function Header() {
   };
 
   return (
-    <header className={classNames(styles.header, { [styles.isSticky]: isSticky })}>
+    <header className={classNames(styles.header, { [styles.isSticky]: isSticky })} data-testid="header">
       <div className={styles.wrapper}>
         <div className={styles.headerContent}>
           <div>

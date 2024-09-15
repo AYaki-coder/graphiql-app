@@ -62,7 +62,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} data-testid="sign-up">
       <div className={classNames(s.page)}>
         <h1>{langRecord.sign_in_up.sign_up}</h1>
 

@@ -56,7 +56,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className={s.body}>
+      <body className={s.body} data-testid="root">
         <LangProvider>
           <Header />
           <main>
@@ -76,7 +76,7 @@ export function ErrorBoundary() {
 
   if (isRouteErrorResponse(error)) {
     return (
-      <div>
+      <div data-testid="error-boundary">
         <h1>
           {error.status} {error.statusText}
         </h1>
@@ -85,7 +85,7 @@ export function ErrorBoundary() {
     );
   } else if (error instanceof Error) {
     return (
-      <div>
+      <div data-testid="error-boundary">
         <h1>Error</h1>
         <p>{error.message}</p>
         <p>The stack trace is:</p>
@@ -93,6 +93,6 @@ export function ErrorBoundary() {
       </div>
     );
   } else {
-    return <h1>Unknown Error</h1>;
+    return <h1 data-testid="error-boundary">Unknown Error</h1>;
   }
 }

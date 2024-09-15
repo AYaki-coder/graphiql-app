@@ -173,7 +173,7 @@ export default function GraphQL() {
   };
 
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} data-testid="graphql-page">
       <div className={s.page}>
         <h1>{langRecord.graphqlPage?.titleText ?? ''}</h1>
         <Form method="post" onSubmit={handleSubmit}>

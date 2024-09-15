@@ -29,7 +29,7 @@ export default function ResponseView(props: ResponseViewProps) {
   const { langRecord } = useContext(LangContext);
 
   return (
-    <div>
+    <div data-testid="response">
       <h2>{langRecord.graphqlPage?.responseLabel ?? ''}</h2>
       <p>
         {langRecord.graphqlPage?.statusLabel ?? ''}: {status}

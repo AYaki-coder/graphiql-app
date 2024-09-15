@@ -20,7 +20,7 @@ export function HistoryPage({ user }: IHistoryPageProps) {
 
   return (
     <>
-      <div className={s.wrapper}>
+      <div className={s.wrapper} data-testid="history-page">
         <section>
           <h2>History Page</h2>
           {historyRecords.map((record, index) => {

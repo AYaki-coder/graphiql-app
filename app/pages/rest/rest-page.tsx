@@ -130,7 +130,7 @@ export function RestPage({ user }: IRestPageProps) {
   }, [setResult, method, url, headers, isGetMethod, bodyObj]);
 
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} data-testid="rest-page">
       <div className={s.page}>
         <h2>REST Client</h2>
         <div className={classNames(s.row)}>
