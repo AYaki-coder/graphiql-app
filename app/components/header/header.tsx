@@ -8,11 +8,14 @@ import _ from 'lodash';
 
 export default function Header() {
   const langContext = useContext(LangContext);
+  const { langRecord } = useContext(LangContext);
   const navigate = useNavigate();
   const data = useLoaderData<IUser | null>();
+  const isAuthorized = data !== null;
   const [isSticky, setIsSticky] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log('data', data);
     let intervalId: NodeJS.Timeout;
     if (data) {
       intervalId = setInterval(
@@ -74,7 +77,7 @@ export default function Header() {
               <img className={styles.logo} src="/logo.svg" alt="logo" />
               <p className={classNames(styles.logoText)}>GraphiQL</p>
             </Link>
-            <Link className={styles.link} to="/get/">
+            {/* <Link className={styles.link} to="/get/">
               [REST Client]
             </Link>
             <Link className={styles.link} to="/graphql/">
@@ -82,15 +85,7 @@ export default function Header() {
             </Link>
             <Link className={styles.link} to="/history">
               [History]
-            </Link>
-            <Link className={styles.link} to="/signin">
-              [Sign In]
-            </Link>
-            <Link className={styles.link} to="/signup">
-              [Sign up]
-            </Link>
-
-            <button onClick={onSignOutClick}>Sign Out</button>
+            </Link> */}
           </div>
 
           <div className={styles.langContainer}>
@@ -112,6 +107,31 @@ export default function Header() {
               onClick={() => langContext?.changeLang(LANGS.ru)}>
               Ru
             </button>
+          </div>
+          <div className={styles.actionContainer}>
+            {isAuthorized ? (
+              <button
+                className={classNames(styles.btn, { [styles.btnSuccess]: isSticky, [styles.btnLight]: !isSticky })}
+                onClick={onSignOutClick}>
+                {langRecord.mainPage.sign_out}
+              </button>
+            ) : (
+              <>
+                <Link
+                  className={classNames(styles.btn, {
+                    [styles.btnOutlineSuccess]: isSticky,
+                    [styles.btnOutlineLight]: !isSticky,
+                  })}
+                  to="/signin">
+                  {langRecord.mainPage.sign_in}
+                </Link>
+                <Link
+                  className={classNames(styles.btn, { [styles.btnSuccess]: isSticky, [styles.btnLight]: !isSticky })}
+                  to="/signup">
+                  {langRecord.mainPage.sign_up}
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

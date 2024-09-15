@@ -1,4 +1,5 @@
 @import './../../styles/color.scss';
+@import './../../styles/button.scss';
 @import './../../styles/global.scss';
 
 .header {
@@ -55,9 +56,18 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  & p {
+    margin-bottom: 0;
+  }
 }
 
 .logo {
   width: 3rem;
   height: 3rem;
+}
+
+.actionContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
