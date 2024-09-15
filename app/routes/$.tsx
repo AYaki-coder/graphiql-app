@@ -29,14 +29,14 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextParams }) => {
 };
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
-  const sessionUser = await getUserSession(request);
-  if (!sessionUser) {
-    return redirect('/signin');
-  }
-
-  const redirectUrl = '/';
+  const redirectUrl = '/404';
 
   if (isRestRoutes(params)) {
+    const sessionUser = await getUserSession(request);
+    if (!sessionUser) {
+      return redirect('/signin');
+    }
+
     const user: IUser = {
       email: sessionUser.email ?? '',
       id: sessionUser.user_id ?? '',
