@@ -51,7 +51,6 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 }
 
 export async function action({ request }: ActionFunctionArgs) {
-  console.log('\n\n\n\n', 'action', request);
   const formData = await request.formData();
   const endpointUrl = formData.get('endpointUrl') as string;
   const query = formData.get('query') as string;
