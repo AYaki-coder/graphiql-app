@@ -37,11 +37,19 @@
 .pillSuccess {
   border-color: $success;
   background-color: rgba(35, 175, 71, 0.2);
-  // color: $success;
 }
 
 .pillInfo {
   background-color: $info-bg;
   border-color: $info;
-  // color: $info;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: space-around;
+  @media #{$media-mobile} {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
 }

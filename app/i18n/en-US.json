@@ -40,7 +40,9 @@
   },
 
   "history": {
-    "title": "History Page"
+    "title": "History Page",
+    "no_records1": "You haven't executed any requests",
+    "no_records2": "It's empty here. Try:"
   },
 
   "sign_in_up": {
