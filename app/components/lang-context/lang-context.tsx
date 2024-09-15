@@ -3,8 +3,8 @@ import EnLang from '../../i18n/en-US.json';
 import RuLang from '../../i18n/ru-RU.json';
 
 export const enum LANGS {
-  en = 'EN',
-  ru = 'RU',
+  en = 'English',
+  ru = 'Русский',
 }
 const LANG_KEY = 'graphiql_rest_lang';
 

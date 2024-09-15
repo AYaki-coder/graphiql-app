@@ -1,4 +1,5 @@
 @import './color.scss';
+@import './global.scss';
 
 button:not(:disabled),
 [type='button']:not(:disabled),
@@ -143,5 +144,31 @@ button:not(:disabled),
     color: $white;
     background-color: $info;
     border-color: $info;
+  }
+}
+
+.btnOutlineSuccess {
+  color: $success;
+  border-color: $success;
+
+  &:hover,
+  :focus-visible,
+  :active {
+    color: $white;
+    background-color: $success;
+    border-color: $success;
+  }
+}
+
+.btnOutlineLight {
+  color: $light;
+  border-color: $light;
+
+  &:hover,
+  :focus-visible,
+  :active {
+    color: $dark;
+    background-color: $light;
+    border-color: $light;
   }
 }
