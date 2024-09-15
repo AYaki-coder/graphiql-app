@@ -39,6 +39,10 @@
     "text": "The page you’re looking for was not found."
   },
 
+  "history": {
+    "title": "History Page"
+  },
+
   "sign_in_up": {
     "sign_in": "Sign In Page",
     "sign_up": "Sign Up Page",

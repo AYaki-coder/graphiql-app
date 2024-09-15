@@ -5,5 +5,43 @@
 
 .record {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  text-decoration: none;
+  color: $dark;
+  background-color: transparent;
+  transition: background-color 0.4s;
+
+  &:hover {
+    background-color: $info-bg;
+  }
+}
+
+.gap {
+  gap: 0.5rem;
+}
+
+.pill {
+  flex: 0 0 12rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  color: $dark;
+}
+
+.pillSuccess {
+  border-color: $success;
+  background-color: rgba(35, 175, 71, 0.2);
+  // color: $success;
+}
+
+.pillInfo {
+  background-color: $info-bg;
+  border-color: $info;
+  // color: $info;
 }
