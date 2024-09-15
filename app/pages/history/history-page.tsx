@@ -23,23 +23,42 @@ export function HistoryPage({ user }: IHistoryPageProps) {
       <div className={s.wrapper}>
         <div className={s.page}>
           <h1>{langRecord.history.title}</h1>
-          <div className={classNames(s.card, s.gap)}>
-            {historyRecords.map((record, index) => {
-              return (
-                <Link key={index} className={classNames(s.record)} to={record.fullLink}>
-                  <span
-                    className={classNames(
-                      s.pill,
-                      { [s.pillInfo]: record.client === CLIENT_TYPE.graph },
-                      { [s.pillSuccess]: record.client === CLIENT_TYPE.rest },
-                    )}>
-                    {record.client}
-                  </span>
-                  <p className={classNames()}>{record.viewLink}</p>
+          {historyRecords.length ? (
+            <div className={classNames(s.card, s.gap)}>
+              {historyRecords.map((record, index) => {
+                return (
+                  <Link key={index} className={classNames(s.record)} to={record.fullLink}>
+                    <span
+                      className={classNames(
+                        s.pill,
+                        { [s.pillInfo]: record.client === CLIENT_TYPE.graph },
+                        { [s.pillSuccess]: record.client === CLIENT_TYPE.rest },
+                      )}>
+                      {record.client}
+                    </span>
+                    <p className={classNames()}>{record.viewLink}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <>
+              <h4 className={classNames(s.alignTextCenter)}>{langRecord.history.no_records1}</h4>
+              <h4 className={classNames(s.alignTextCenter)}>{langRecord.history.no_records2}</h4>
+              <div className={s.buttonBlock}>
+                <Link to="/get/">
+                  <button className={classNames(s.btn, s.btnLg, s.btnSuccess, s.btnLink)}>
+                    {langRecord.mainPage.rest_client}
+                  </button>
                 </Link>
-              );
-            })}
-          </div>
+                <Link to="/graphql/">
+                  <button className={classNames(s.btn, s.btnLg, s.btnSuccess, s.btnLink)}>
+                    {langRecord.mainPage.graph_client}
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

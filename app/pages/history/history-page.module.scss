@@ -45,3 +45,13 @@
   border-color: $info;
   // color: $info;
 }
+
+.buttonBlock {
+  display: flex;
+  justify-content: space-around;
+  @media #{$media-mobile} {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
